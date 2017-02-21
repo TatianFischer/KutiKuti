@@ -19,7 +19,9 @@ Route::get('apropos', function() {
 	return view('apropos');
 })->name('apropos');
 
-Route::get('tutos');
+Route::get('tutos', function() {
+	return view('tutos');
+})->name('tutos');
 
 
 /*-----------------------------------------
