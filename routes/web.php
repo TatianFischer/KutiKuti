@@ -15,28 +15,36 @@ Route::get('/', function () {
     return view('accueil');
 })->name('accueil');
 
-Route::get('/apropos');
+Route::get('apropos', function() {
+	return view('apropos');
+})->name('apropos');
 
-Route::get('/tutos');
+Route::get('tutos');
 
 
 /*-----------------------------------------
 -------------------------------------------*/
-Route::get('/preorder', 'PreorderController@index');
+Route::get('preorder', 'PreorderController@index');
 
 // Envoi du formulaire
-Route::post('/preorder', 'PreorderController@store');
+Route::post('preorder', 'PreorderController@store');
+
+Route::get('preorder/show', function () {
+    return view('preorder.show');
+});
+
 
 /*------------------------------------------
 --------------------------------------------*/
 // Page admin avec la listes des vidéos
-Route::get('/videos', 'VideosController@index')->name('videos.index');
+Route::get('videos', 'VideosController@index')->name('videos.index');
 
 // Page admin ajout d'une vidéo
-Route::get('/videos/create', 'VideosController@create')->name('videos.create')->name('videos.create');
+Route::get('videos/create', 'VideosController@create')->name('videos.create')->name('videos.create');
 
 // Modification des vidéos
-Route::get('/videos/{video}/edit', 'VideosController@edit')->name('videos.edit');
+Route::get('videos/{video}/edit', 'VideosController@edit')->name('videos.edit');
 
 // Suppression d'une vidéo
-Route::delete('/videos/{video}', 'VideosController@destroy')->name('videos.destroy');
+Route::delete('videos/{video}', 'VideosController@destroy')->name('videos.destroy');
+
