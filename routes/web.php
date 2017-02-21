@@ -24,6 +24,7 @@ Route::get('tutos', function() {
 })->name('tutos');
 
 
+
 /*-----------------------------------------
 -------------------------------------------*/
 // Formulaire de précommande
@@ -42,6 +43,7 @@ Route::get('preorder/show', function () {
 
 // Formulaire pour supprimer le précommande
 Route::delete('preorder/{preorder}', 'PreorderController@destroy');
+
 
 /*------------------------------------------
 --------------------------------------------*/
