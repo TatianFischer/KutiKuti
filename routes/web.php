@@ -33,6 +33,7 @@ Route::get('preorder/show', function () {
     return view('preorder.show');
 });
 
+
 /*------------------------------------------
 --------------------------------------------*/
 // Page admin avec la listes des vidéos
@@ -46,3 +47,4 @@ Route::get('videos/{video}/edit', 'VideosController@edit')->name('videos.edit');
 
 // Suppression d'une vidéo
 Route::delete('videos/{video}', 'VideosController@destroy')->name('videos.destroy');
+
