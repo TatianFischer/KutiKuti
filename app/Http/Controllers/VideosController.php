@@ -9,7 +9,7 @@ class VideosController extends Controller
 {
     public function index(){
     	$videos = Video::all();
-    	return view('video.gestion', compact('videos'));
+    	return view('video.index', compact('videos'));
     }
 
 

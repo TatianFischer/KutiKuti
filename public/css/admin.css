@@ -10,3 +10,16 @@ table, td, tr, th{
 td, th{
 	padding: 5px;
 }
+
+table img{
+	height: 125px;
+	width: 200px;
+}
+
+/*---------------------------
+		Formulaire
+-----------------------------*/
+span.help-block{
+	margin-top: 0;
+	margin-bottom: 5px;
+}
