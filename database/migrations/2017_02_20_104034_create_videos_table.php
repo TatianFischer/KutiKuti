@@ -16,10 +16,10 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->integer('step');
             $table->string('tag');
             $table->string('slug');
             $table->string('image');
-            $table->timestamps();
         });
     }
 

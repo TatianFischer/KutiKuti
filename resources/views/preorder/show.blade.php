@@ -1,6 +1,6 @@
-<!-- extends('layouts.master') -->
+@extends('layouts.master')
 
-<!-- @section('content') -->
+@section('content')
 	<h1>Précommandes</h1>
 		
 	<table border="1" summary="Tableau résumant les commandes">
@@ -19,22 +19,22 @@
 		</thead>
 
 		<tbody>
-			<!-- @foreach($commands as $command) -->
+			<!-- foreach($commands as $command) -->
 
 			<tr>
 
-				<!-- @foreach($command as $key => $valeur) -->
-					<!-- @if($key == 'total') -->
+				<!-- foreach($command as $key => $valeur) -->
+					<!-- if($key == 'total') -->
 
-					<td>{{ $valeur }} €</td>
+					<td> $valeur  €</td>
 
-					<!-- @else -->
+					<!-- else -->
 
-					<td> {{ $valeur }} </td>
+					<td> $valeur </td>
 
-					<!-- @endif -->
+					<!-- endif -->
 
-				<!-- @endforeach -->
+				<!-- endforeach -->
 
 				<td><a href="">Détails</a></td>
 
@@ -42,7 +42,7 @@
 
 			</tr>
 
-			<!-- @endforeach -->
+			<!-- endforeach -->
 
 		</tbody>
 
@@ -64,19 +64,19 @@
 		</thead>
 
 		<tbody>
-			<!-- @foreach($commands as $command) -->
+			<!-- foreach($commands as $command) -->
 
 			<tr>
 
-				<!-- @foreach($command as $key => $valeur) -->
+				<!-- foreach($command as $key => $valeur) -->
 
-					<td> {{ $valeur }} </td>
+					<td>  $valeur  </td>
 
-				<!-- @endforeach -->
+				<!-- endforeach -->
 
 			</tr>
 
-			<!-- @endforeach -->
+			<!-- endforeach -->
 
 		</tbody>
 
@@ -96,29 +96,29 @@
 		</thead>
 
 		<tbody>
-			<!-- @foreach($commands as $command) -->
+			<!-- foreach($commands as $command) -->
 
 			<tr>
 
-				<!-- @foreach($command as $key => $valeur) -->
-					<!-- @if($key == 'total') -->
+				<!-- foreach($command as $key => $valeur) -->
+					<!-- if($key == 'total') -->
 
-					<td>{{ $valeur }} €</td>
+					<td> $valeur  €</td>
 
-					<!-- @else -->
+					<!-- else -->
 
-					<td> {{ $valeur }} </td>
+					<td>  $valeur  </td>
 
-					<!-- @endif -->
+					<!-- endif -->
 
-				<!-- @endforeach -->
+				<!-- endforeach -->
 
 			</tr>
 
-			<!-- @endforeach -->
+			<!-- endforeach -->
 
 		</tbody>
 
 	</table>
 
-<!-- @endsection -->
+@endsection
