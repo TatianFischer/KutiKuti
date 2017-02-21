@@ -22,7 +22,7 @@
                         <a href="{{url('apropos')}}">a propos</a>
                     </li>
                     <li>
-                        <a href="#">tutos</a>
+                        <a href="{{url('tutos')}}">tutos</a>
                     </li>
                     <li>
                         <a href="#">photos</a>
