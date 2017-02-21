@@ -3,6 +3,14 @@ body {
     background-color: rgb(231, 247, 245);
 }
 
+.r-m {
+    margin: 0 !important;
+}
+
+.r-p {
+    padding: 0 !important;
+}
+
 /* barre de navigation */
 
 #barre_navigation .navbar-nav>li>a {
@@ -80,9 +88,7 @@ nav .logo {
 }
 
 
-r-m {
-    margin: 0 !important;
-}
+
 
 
 
@@ -109,6 +115,21 @@ img {
     width: 100%;
 }
 
+#apropos_image{
+    box-shadow: -10px -10px 0 rgb(0, 195, 141);
+}
+
+
+#apropos_paragraphe{
+    background-color: white;
+    box-shadow: 10px 10px 0 rgb(0, 195, 141);
+}
+
+#apropos_paragraphe2{
+    background-color: rgb(0, 195, 141);
+}
+
+
 .desc1 {
     margin: 20px;
     padding-top: 60px;
@@ -120,6 +141,22 @@ img {
 }
 
 /* iframe */
+
+.poster img {
+    height: 250px;
+    object-fit: cover;
+}
+
+.poster_row {
+    padding: 20px;
+}
+
+.poster_row:nth-child(1){
+    padding-top: 40px;
+}
+
+
+
 
 footer {
     width: 100%;

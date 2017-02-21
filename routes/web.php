@@ -23,8 +23,6 @@ Route::get('tutos', function() {
 	return view('tutos');
 })->name('tutos');
 
-
-
 /*-----------------------------------------
 -------------------------------------------*/
 // Formulaire de précommande
