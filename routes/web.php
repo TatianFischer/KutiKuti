@@ -23,17 +23,24 @@ Route::get('tutos', function() {
 	return view('tutos');
 })->name('tutos');
 
-
 /*-----------------------------------------
 -------------------------------------------*/
-Route::get('preorder', 'PreorderController@index');
+// Formulaire de précommande
+Route::get('preorder/create', 'PreorderController@create');
 
-// Envoi du formulaire
+// Ajout de la précommande à la base de donnée
 Route::post('preorder', 'PreorderController@store');
 
+// Page admin avec la listes des précommandes
+Route::get('preorder', 'PreorderController@index');
+
+// Page admin avec détail de la précommande
 Route::get('preorder/show', function () {
     return view('preorder.show');
 });
+
+// Formulaire pour supprimer le précommande
+Route::delete('preorder/{preorder}', 'PreorderController@destroy');
 
 
 /*------------------------------------------
@@ -41,12 +48,17 @@ Route::get('preorder/show', function () {
 // Page admin avec la listes des vidéos
 Route::get('videos', 'VideosController@index')->name('videos.index');
 
-// Page admin ajout d'une vidéo
-Route::get('videos/create', 'VideosController@create')->name('videos.create')->name('videos.create');
+// Page admin : formulaire d'ajout d'une vidéo
+Route::get('videos/create', 'VideosController@create')->name('videos.create');
 
-// Modification des vidéos
+//Envoi du formulaire d'ajout
+Route::post('videos', 'VideosController@store')->name('videos.store');
+
+// formulaire de modification des vidéos
 Route::get('videos/{video}/edit', 'VideosController@edit')->name('videos.edit');
+
+// Envoi du formulaire de modification
+Route::put('videos/{video}', 'VideosController@update')->name('videos.update');
 
 // Suppression d'une vidéo
 Route::delete('videos/{video}', 'VideosController@destroy')->name('videos.destroy');
-
