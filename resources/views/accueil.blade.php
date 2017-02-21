@@ -2,10 +2,6 @@
 
 @section('content')
 <div class="container-fluid" id="main">
-        
-        <div class="logo">
-            <img src="img/logo.png">
-        </div>
 
         <div class="row r-m">
 

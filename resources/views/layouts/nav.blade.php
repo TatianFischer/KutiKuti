@@ -1,3 +1,7 @@
+
+
+
+
 <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -15,7 +19,7 @@
             <div class="collapse navbar-collapse" id="barre_navigation">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="#">a propos</a>
+                        <a href="{{url('apropos')}}">a propos</a>
                     </li>
                     <li>
                         <a href="#">tutos</a>
@@ -26,9 +30,13 @@
                 </ul>
                <form class="navbar-form navbar-right inline-form">
                 <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> pré-commande</button>
+                <button type="submit" class="btn btn-primary btn-sm"><a href="{{url('preorder.create')}}"></a><span class="glyphicon glyphicon-eye-open"></span> pré-commande</button>
             </div>
           </form>
         </div>
+    </div>
+
+    <div class="logo">
+        <img src="img/logo.png">
     </div>
 </nav>

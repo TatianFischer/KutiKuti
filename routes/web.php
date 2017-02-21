@@ -11,12 +11,38 @@
 |
 */
 
-Route::get('/', function(){
-	return view('accueil');
+Route::get('/', function () {
+    return view('accueil');
 })->name('accueil');
 
-// controller => PostsController
+Route::get('apropos', function() {
+	return view('apropos');
+})->name('apropos');
 
-//Eloquent model => Post
+Route::get('tutos');
 
-// migration => create_posts_table
+
+/*-----------------------------------------
+-------------------------------------------*/
+Route::get('preorder', 'PreorderController@index');
+
+// Envoi du formulaire
+Route::post('preorder', 'PreorderController@store');
+
+Route::get('preorder/show', function () {
+    return view('preorder.show');
+});
+
+/*------------------------------------------
+--------------------------------------------*/
+// Page admin avec la listes des vidéos
+Route::get('videos', 'VideosController@index')->name('videos.index');
+
+// Page admin ajout d'une vidéo
+Route::get('videos/create', 'VideosController@create')->name('videos.create')->name('videos.create');
+
+// Modification des vidéos
+Route::get('videos/{video}/edit', 'VideosController@edit')->name('videos.edit');
+
+// Suppression d'une vidéo
+Route::delete('videos/{video}', 'VideosController@destroy')->name('videos.destroy');
