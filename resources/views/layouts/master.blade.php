@@ -4,6 +4,8 @@
   <title>Kuti Kuti</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- font-family: 'Chivo', sans-serif; -->
+  <link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
   <!-- CSS aditionnel -->
