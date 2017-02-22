@@ -17,6 +17,8 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('modele');
             $table->enum('couleur', ['gris', 'parme']);
+            $table->integer('price');
+            $table->string('photo');
             $table->integer('quantite');
         });
     }
