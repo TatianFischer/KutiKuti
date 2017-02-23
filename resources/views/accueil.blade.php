@@ -30,12 +30,10 @@
                                      <div class="info-carrousel_c">Kutì Kutì <br>est un jeu d'assemblage interactif et <br>lumineux à partir de 8 ans</div>
                                 </div>
                             </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">  </a>
+
+            
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"></a>
                         </div>
                     </div>
 
@@ -49,5 +47,3 @@
     <!-- /.container -->
 
 @endsection
-
-   
