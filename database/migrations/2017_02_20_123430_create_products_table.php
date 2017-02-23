@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->enum('couleur', ['gris', 'parme']);
             $table->integer('price');
             $table->string('photo');
-            $table->integer('quantite');
         });
     }
 

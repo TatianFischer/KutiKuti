@@ -27,6 +27,7 @@ class CreateDetailsPreorderTable extends Migration
                 ->on('products')
                 ->onDelete('no action')
                 ->onUpdate('cascade');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

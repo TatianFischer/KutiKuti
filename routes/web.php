@@ -63,5 +63,20 @@ Route::delete('videos/{video}', 'VideosController@destroy')->name('videos.destro
 
 /*------------------------------------------
 --------------------------------------------*/
-// Page admin avec la listes des vidéos
+// Page admin avec la listes des produits
 Route::get('produits', 'ProductsController@index')->name('products.index');
+
+// Formulaire ajout des produits
+Route::get('produits/create', 'ProductsController@create')->name('products.create');
+
+// Gestion du formulaire d'ajout
+Route::post('produits', 'ProductsController@store')->name('products.store');
+
+// Formulaire de modification d'un produit
+Route::get('produits/{product}/edit', 'ProductsController@edit')->name('products.edit');
+
+// Gestion du formulaire de modification
+Route::put('produits/{product}', 'ProductsController@update')->name('products.update');
+
+// Suppression d'un produit
+Route::delete('produits/{product}', 'ProductsController@destroy')->name('products.destroy');
