@@ -19,9 +19,7 @@ Route::get('apropos', function() {
 	return view('apropos');
 })->name('apropos');
 
-Route::get('tutos', function() {
-	return view('tutos');
-})->name('tutos');
+Route::get('tutos', 'TutosController@index')->name('tutos');
 
 /*-----------------------------------------
 -------------------------------------------*/
@@ -33,6 +31,7 @@ Route::post('preorder', 'PreordersController@store')->name('preorders.store');
 
 // Page admin avec la listes des précommandes
 Route::get('preorder', 'PreordersController@index')->name('preorders.index');
+
 
 // Page admin avec détail de la précommande
 Route::get('preorder/show', 'PreordersController@show')->name('preorders.show');
