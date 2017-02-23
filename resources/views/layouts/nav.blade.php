@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="barre_navigation">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="{{url('apropos')}}">à propos</a>
+                        <a href="{{url('apropos')}}">&Agrave; propos</a>
                     </li>
                     <li>
                         <a href="{{url('tutos')}}">Tutos</a>

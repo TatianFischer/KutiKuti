@@ -1,10 +1,13 @@
-
 @extends ('layouts.master')
 
+@push('css')
 <link href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/preco.css">
-<div id="content">
+@endpush
+
+@section('content')
+<div class="container" id="form_precommande">
     <h1>Formulaire de précommande</h1>
 
     <form action="" method="post" autocomplete="on">
@@ -48,3 +51,4 @@
 
     </form>
 </div>
+@endsection
