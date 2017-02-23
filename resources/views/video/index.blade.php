@@ -5,9 +5,18 @@
 @endpush
 
 @section('content')
-<div class="container">
+<div class="container" id="videos">
+
+	@include('layouts.admin_nav')
+
 	<h1>Gestion des vidéos</h1>
 	<h2>Listes des vidéos</h2>
+
+	@if(isset($success))
+        <div class="alert alert-success"> {{$success}} </div>
+    @endif
+
+	<p class="ajout"><a href="{{ route('videos.create')}}">Ajouter une video</a></p>
 
 	<table>
 		<thead>
@@ -33,12 +42,16 @@
 
 					<td>{{$video->slug}}</td>
 
-					<td><img src="{{URL::asset('img/posters/'.$video->image)}}" alt="{{$video->title}}"></td>
+					<td><img src="{{URL::asset('img/posters/'.$video->poster)}}" alt="{{$video->title}}"></td>
 
-					<td><a href="{{route('videos.create')}}" class="btn btn-success">Modification</a></td>
+					<td><a href="{{route('videos.edit', ['video' => $video->id])}}" class="btn btn-success">Modification</a></td>
 
 					<td>
-						<a href="{{route('videos.destroy', 'videos\$video->id')}}" class="btn btn-danger">Suppression</a>
+						<form action="{{route('videos.destroy', ['video' => $video->id])}}" method="post">
+						{{ csrf_field() }}
+						{{ method_field('DELETE') }}
+						<button type="submit" class="btn btn-danger">Suppression</button>
+						</form>
 					</td>
 					
 				</tr>
@@ -49,48 +62,4 @@
 
 	</table>
 
-
-	<h2>Modification ou Ajout</h2>
-
-	<form action="" method="post" enctype="multipart/form-data">
-		 
-		{{ csrf_field() }}
-
-		<input type="text" name="id" hidden>
-		<div class="col-md-6">
-			<div class="form-group">
-				<label for="title" class="control-label col-sm-4">Titre :</label>
-				<input type="text" class="form-control" id="title" name="title">
-			</div>
-
-			<div class="form-group">
-				<label for="step" class="control-label col-sm-4">Etape :</label>
-				<input type="text" class="form-control" id="step" name="step">
-			</div>
-
-			<div class="form-group">
-				<label for="tag" class="control-label col-sm-4">Tag :</label>
-				<span class="help-block col-sm-6">Numéro de la vidéo</span>
-				<input type="text" class="form-control" id="tag" name="tag">
-			</div>
-		</div>
-
-		<div class="col-md-6">
-			<div class="form-group">
-				<label for="slug" class="control-label col-sm-4">Slug :</label>
-				<span class="help-block col-sm-6">Nom à afficher dans l'url</span>
-				<input type="text" class="form-control" id="slug" name="slug">
-			</div>
-
-			<div class="form-group">
-				<label for="poster" class="control-label col-sm-4">Poster :</label>
-				<input type="file" class="form-control" id="poster" name="poster">
-			</div>
-			
-			<div class="form-group">
-				<input type="submit" value="Validation" class="form-control">
-			</div>
-		</div>
-	</form>
-</div>
 @endsection
