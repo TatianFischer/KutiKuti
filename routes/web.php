@@ -26,21 +26,19 @@ Route::get('tutos', function() {
 /*-----------------------------------------
 -------------------------------------------*/
 // Formulaire de précommande
-Route::get('preorder/create', 'PreordersController@create');
+Route::get('preorder/create', 'PreordersController@create')->name('preorders.create');
 
 // Ajout de la précommande à la base de donnée
-Route::post('preorder', 'PreordersController@store');
+Route::post('preorder', 'PreordersController@store')->name('preorders.store');
 
 // Page admin avec la listes des précommandes
-Route::get('preorder', 'PreordersController@index');
+Route::get('preorder', 'PreordersController@index')->name('preorders.index');
 
 // Page admin avec détail de la précommande
-Route::get('preorder/show', function () {
-    return view('preorder.show');
-});
+Route::get('preorder/show', 'PreordersController@show')->name('preorders.show');
 
 // Formulaire pour supprimer le précommande
-Route::delete('preorder/{preorder}', 'PreordersController@destroy');
+Route::delete('preorder/{preorder}', 'PreordersController@destroy')->name('preorders.destroy');
 
 
 /*------------------------------------------
@@ -62,3 +60,9 @@ Route::put('videos/{video}', 'VideosController@update')->name('videos.update');
 
 // Suppression d'une vidéo
 Route::delete('videos/{video}', 'VideosController@destroy')->name('videos.destroy');
+
+
+/*------------------------------------------
+--------------------------------------------*/
+// Page admin avec la listes des vidéos
+Route::get('produits', 'ProductsController@index')->name('products.index');

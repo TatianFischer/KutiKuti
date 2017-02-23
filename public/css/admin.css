@@ -2,6 +2,29 @@
 	font-size: 1.4rem;
 }
 
+#nav_admin{
+	text-align: right;
+	font-size: 1.6rem;
+	background-color: white;
+	margin: 5px 0;
+}
+
+#nav_admin li{
+	border: 3px solid white;
+}
+
+#nav_admin li:hover{
+	border: 3px solid rgb(0,255,141);
+}
+
+#nav_admin li a{
+	background-color: white;
+	color: rgb(0,195,141);
+	margin:0;
+	border-radius: 0;
+	border: 0;
+}
+
 #videos{
 	padding-top: 80px;
 }
