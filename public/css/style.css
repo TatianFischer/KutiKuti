@@ -1,7 +1,15 @@
-body {
+
+                /* PAGE CSS */
+html{
     font-size: 62.5%;
-    background-color: rgb(225, 245, 243);
 }
+
+body {
+    font-size: 1.6rem;
+    background-color: rgb(225, 245, 243);
+    font-family: 'Chivo', sans-serif;
+}
+
 
 .r-m {
     margin: 0 !important;
@@ -10,6 +18,11 @@ body {
 .r-p {
     padding: 0 !important;
 }
+
+
+
+
+
 
 /* barre de navigation */
 
@@ -51,16 +64,24 @@ nav .logo {
     margin: 0 auto; */
 }
 
-/* caroussel */
 
-.slider {
-    padding: 0;
+
+
+
+/* page accueil */
+
+
+#main {
+    padding: 10px;
+    margin: -10px;
 }
 
-.carousel-inner {
+
+#main img {
     width: 100%;
-    position: relative;
+    height: 950px;
 }
+
 
 .info-carrousel_a {
     font-size: 35px;
@@ -92,30 +113,21 @@ nav .logo {
 
 
 
-.close {
-    float: left;
-    margin-left: 220px;
-}
-
-.btn-group-lg>.btn, .btn-lg {
-    font-size: 10px;
-}
-
-input {
-    margin-left: 12px;
-}
-
-p {
-    font-size: 20px;
+/* page apropos */
+#apropos {
     color: blue;
 }
 
 
-img {
-    width: 100%;
+#apropos img {
+    width: 75%;
 }
 
-#apropos_image{
+img:hover{
+    filter: grayscale(70%);
+}
+
+#apropos_image img{
     box-shadow: -10px -10px 0 rgb(107, 255, 189);
 }
 
@@ -140,23 +152,68 @@ img {
     padding: 05px;
 }
 
-/* iframe */
+
+
+
+
+
+/* page tutos */
+figure{
+    position: relative;
+}
+
+figcaption {
+    font-size: 18px;
+    color: purple;
+    width: 40%;
+    height: 30%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
 
 .poster img {
     height: 250px;
     object-fit: cover;
+    width: 100%;
 }
 
 .poster_row {
-    padding: 20px;
+    padding-left: 5px;
+    margin-left: 5px;
 }
 
 .poster_row:nth-child(1){
-    padding-top: 40px;
+    padding-top: 5px;
+}
+
+
+/* footer */
+
+.close {
+    float: left;
+    margin-left: 220px;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    font-size: 10px;
 }
 
 
 
+
+
+/* footer modal lien admin */
+
+input {
+    margin-left: 12px;
+}
+
+
+
+
+/* footer */
 
 footer {
     width: 100%;

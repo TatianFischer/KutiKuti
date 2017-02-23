@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
             $table->integer('step');
             $table->string('tag');
             $table->string('slug');
-            $table->string('image');
+            $table->string('poster');
         });
     }
 
