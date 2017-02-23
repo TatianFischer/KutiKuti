@@ -14,29 +14,31 @@
                 </button>
                 <a class="navbar-brand" href="#"></a>
             </div>
-            
-            
+
+
             <div class="collapse navbar-collapse" id="barre_navigation">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
                         <a href="{{url('apropos')}}">à propos</a>
                     </li>
                     <li>
-                        <a href="{{url('tutos')}}">tutos</a>
+                        <a href="{{url('tutos')}}">Tutos</a>
                     </li>
                     <li>
-                        <a href="#">photos</a>
+                        <a href="#">Photos</a>
                     </li>
                 </ul>
                <form class="navbar-form navbar-right inline-form">
                 <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-sm"><a href="{{url('preorder.create')}}"></a><span class="glyphicon glyphicon-eye-open"></span> pré-commande</button>
+                  <button type="submit" class="btn btn-primary btn-sm"><a href="{{route('preorder.create')}}">pré-commande</a></button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-    </div>
+          </div>
 
-    <div class="logo">
-        <img src="img/logo.png">
+<div class="row">
+    <div class="col-xs-12 logo">
+      <a href="{{url('/')}}"><img src="{{URL::asset('img/logo.png')}}" alt=""></a>
     </div>
+</div>
 </nav>
