@@ -7,7 +7,7 @@
 @section('content')
 <div class="container" id="videos">
 	<h1>Gestion des vidéos</h1>
-	<h2>Ajout d'une vidéo</h2>
+	<h2>Modification d'une vidéo</h2>
 	
 	@if(count($errors))
 	<div class="alert alert-danger">
@@ -19,29 +19,26 @@
 	</div>
 	@endif
 
-	@if(isset($success))
-        <div class="alert alert-success"> {{$success}} </div>
-    @endif
-
-	<form action="{{route('videos.store')}}" method="POST" enctype="multipart/form-data">
+	<form action="{{route('videos.update', ['video' => $video->id])}}" enctype="multipart/form-data" method="post">
 		 
 		{{ csrf_field() }}
+		{{ method_field('PUT') }}
 
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="title" class="control-label col-sm-4">Titre :</label>
-				<input type="text" class="form-control" id="title" name="title" required>
+				<input type="text" class="form-control" id="title" name="title" required value={{$video->title}}>
 			</div>
 
 			<div class="form-group">
 				<label for="step" class="control-label col-sm-4">Etape :</label>
-				<input type="text" class="form-control" id="step" name="step" required>
+				<input type="text" class="form-control" id="step" name="step" required value="{{$video->step}}">
 			</div>
 
 			<div class="form-group">
 				<label for="tag" class="control-label col-sm-4">Tag :</label>
 				<span class="help-block col-sm-6">Numéro de la vidéo</span>
-				<input type="text" class="form-control" id="tag" name="tag" required>
+				<input type="text" class="form-control" id="tag" name="tag" required value="{{$video->tag}}">
 			</div>
 		</div>
 
@@ -49,12 +46,20 @@
 			<div class="form-group">
 				<label for="slug" class="control-label col-sm-4">Slug :</label>
 				<span class="help-block col-sm-6">Nom à afficher dans l'url</span>
-				<input type="text" class="form-control" id="slug" name="slug" required>
+				<input type="text" class="form-control" id="slug" name="slug" required value="{{$video->slug}}">
 			</div>
 
 			<div class="form-group">
-				<label for="poster" class="control-label col-sm-4">Poster :</label>
-				<input type="file" class="form-control" id="poster" name="poster" required>
+				<label for="poster" class="control-label col-sm-2">Poster :</label>
+				
+				<div class="col-sm-3 col-xs-6">
+				@if(isset($video->poster))
+					<img src="{{URL::asset('img/posters/'.$video->poster)}}" alt="{{$video->title}}">
+				@endif
+				</div>
+				<div class="col-sm-7 col-xs-9">
+					<input type="file" class="form-control" id="poster" name="poster" value="{{$video->poster}}">	
+				</div>
 			</div>
 			
 			<div class="form-group">

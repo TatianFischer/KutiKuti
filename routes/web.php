@@ -26,13 +26,13 @@ Route::get('tutos', function() {
 /*-----------------------------------------
 -------------------------------------------*/
 // Formulaire de précommande
-Route::get('preorder/create', 'PreorderController@create');
+Route::get('preorder/create', 'PreordersController@create');
 
 // Ajout de la précommande à la base de donnée
-Route::post('preorder', 'PreorderController@store');
+Route::post('preorder', 'PreordersController@store');
 
 // Page admin avec la listes des précommandes
-Route::get('preorder', 'PreorderController@index');
+Route::get('preorder', 'PreordersController@index');
 
 // Page admin avec détail de la précommande
 Route::get('preorder/show', function () {
@@ -40,7 +40,7 @@ Route::get('preorder/show', function () {
 });
 
 // Formulaire pour supprimer le précommande
-Route::delete('preorder/{preorder}', 'PreorderController@destroy');
+Route::delete('preorder/{preorder}', 'PreordersController@destroy');
 
 
 /*------------------------------------------

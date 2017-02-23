@@ -47,11 +47,44 @@ class VideosController extends Controller
         return $this->create()->with('success', 'Video ajoutée avec succès'); 
     }
 
-    public function edit(){
-
+    public function edit(Video $video){
+        return view('video.edit', compact('video'));
     }
 
-    public function destroy(){
+    public function update(Request $request, Video $video){
+        $this->validate($request, [
+            'title' => 'required',
+            'step' => 'required',
+            'tag' => 'required',
+            'slug' => 'required',
+            'poster' => 'image|dimensions:min_width=50,min_height=50',
+        ]);
 
+        $video->title = $request->title;
+        $video->step = $request->step;
+        $video->tag = $request->tag;
+        $video->slug = $request->slug;
+
+        $last_poster_name = $video->poster;
+
+        if($request->hasFile('poster')){
+            $file = Input::file('poster');
+            unlink(public_path().'/img/posters/'.$last_poster_name);
+
+            $name = $file->getClientOriginalName();
+            $video->poster = $name;
+            $file->move(public_path().'/img/posters',$name);
+        }
+
+        $video->update();
+        $request->session()->reflash('success', 'Video modifiée avec succès');
+        return redirect()->route("videos.index");
+    }
+
+    public function destroy(Video $video){
+        $poster_name = $video->poster;
+        $video->delete();
+        unlink(public_path().'/img/posters/'.$poster_name);
+        return back()->with('success', 'Video supprimée avec succès');
     }
 }
