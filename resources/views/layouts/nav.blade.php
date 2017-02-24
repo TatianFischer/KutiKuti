@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse" id="barre_navigation">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="{{url('apropos')}}">à propos</a>
+                        <a href="{{url('apropos')}}">&Agrave; propos</a>
                     </li>
                     <li>
                         <a href="{{url('tutos')}}">Tutos</a>
@@ -30,7 +30,7 @@
                 </ul>
                <form class="navbar-form navbar-right inline-form">
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-sm"><a href="{{route('preorder.create')}}">pré-commande</a></button>
+                  <button type="submit" class="btn btn-primary btn-sm"><a href="{{route('preorders.create')}}">pré-commande</a></button>
                 </div>
               </form>
             </div>

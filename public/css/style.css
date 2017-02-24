@@ -1,7 +1,15 @@
-body {
+
+                /* PAGE CSS */
+html{
     font-size: 62.5%;
-    background-color: rgb(225, 245, 243);
 }
+
+body {
+    font-size: 1.6rem;
+    background-color: rgb(225, 245, 243);
+    font-family: 'Chivo', sans-serif;
+}
+
 
 .r-m {
     margin: 0 !important;
@@ -10,6 +18,11 @@ body {
 .r-p {
     padding: 0 !important;
 }
+
+
+
+
+
 
 /* barre de navigation */
 
@@ -63,18 +76,18 @@ nav .logo {
     margin: 0 auto; */
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #00c38d;
-    border-color: #00c38d;
+/*Padding / logo */
+#apropos,#tutos, #form_precommande{
+    padding-top: 120px;
 }
 
-/* caroussel */
 
 .container{
   padding-top: 100px; 
 }
 
+
+/* page accueil */
 .slider {
     padding: 0;
 }
@@ -114,30 +127,17 @@ nav .logo {
 
 
 
-.close {
-    float: left;
-    margin-left: 220px;
-}
-
-.btn-group-lg>.btn, .btn-lg {
-    font-size: 10px;
-}
-
-input {
-    margin-left: 12px;
-}
-
-p {
-    font-size: 20px;
+/* page apropos */
+#apropos {
     color: blue;
 }
 
 
-img {
-    width: 100%;
+#apropos img {
+    width: 75%;
 }
 
-#apropos_image{
+#apropos_image img{
     box-shadow: -10px -10px 0 rgb(107, 255, 189);
 }
 
@@ -154,31 +154,78 @@ img {
 
 .desc1 {
     margin: 20px;
-    padding-top: 60px;
 }
 
 .desc2 {
     margin: 10px;
-    padding: 05px;
 }
 
-/* iframe */
+
+
+
+
+
+/* page tutos */
+#tutos figure{
+    position: relative;
+}
+
+#tutos figcaption {
+    font-size: 18px;
+    color: purple;
+    width: 40%;
+    height: 30%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+
+#tutos img:hover{
+    filter: grayscale(100%);
+}
 
 .poster img {
     height: 250px;
     object-fit: cover;
+    width: 100%;
 }
 
 .poster_row {
-    padding: 20px;
+    padding-left: 5px;
+    margin-left: 5px;
 }
 
 .poster_row:nth-child(1){
-    padding-top: 40px;
+    padding-top: 5px;
+}
+
+
+/* footer */
+
+.close {
+    float: left;
+    margin-left: 220px;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    font-size: 10px;
 }
 
 
 
+
+
+/* footer modal lien admin */
+
+input {
+    margin-left: 12px;
+}
+
+
+
+
+/* footer */
 
 footer {
     width: 100%;
