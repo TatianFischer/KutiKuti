@@ -3,8 +3,8 @@
 @push('css')
 <link href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/preco.css">
-@endpush
+<link rel="stylesheet" href="{{URL::asset('css/preco.css')}}">
+
 
 @section('content')
 <div class="container" id="form_precommande">

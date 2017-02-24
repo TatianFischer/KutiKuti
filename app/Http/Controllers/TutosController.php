@@ -10,7 +10,8 @@ class TutosController extends Controller
     	return view('tutos', compact('videos'));
     }
 
-    public function show() {
-
+    public function show(Video $video) {
+    	return view('', compact('video'));
     }
 }
+

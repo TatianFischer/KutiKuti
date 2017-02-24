@@ -21,6 +21,8 @@ Route::get('apropos', function() {
 
 Route::get('tutos', 'TutosController@index')->name('tutos');
 
+Route::get('tutos/{tutos}', 'TutosController@show')->name('tutos.show');
+
 /*-----------------------------------------
 -------------------------------------------*/
 // Formulaire de précommande

@@ -30,7 +30,7 @@ body {
     color: rgb(0, 195, 141);
     margin-right: 25px;
     margin-left: -15px;
-    padding: 40px;
+    padding: 60px;
     font-size: 25px;
 }
 
@@ -40,7 +40,15 @@ body {
 }
 
 .form-group a {
-  color: white;
+  color: black;
+  background-color: white;
+}
+
+.btn-primary {
+    background-color: white;
+    border-width: 03px; 
+    border-color: purple;
+    box-shadow:-05px 05px 0px purple; 
 }
 
 nav {
@@ -72,8 +80,6 @@ nav .logo {
     z-index: 1;
     width: 100%;
     padding-top: 0;
-    /*margin-top: -5rem;
-    margin: 0 auto; */
 }
 
 /*Padding / logo */
@@ -83,7 +89,12 @@ nav .logo {
 
 
 
+
+
+
+
 /* page accueil */
+
 .slider {
     padding: 0;
 }
@@ -259,7 +270,9 @@ iframe {
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-
+    .logo img {
+        padding-top: 10px;
+    }
 }
 
 /* Extra Small Devices, Phones */
