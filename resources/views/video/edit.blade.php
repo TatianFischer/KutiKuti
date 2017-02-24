@@ -30,7 +30,7 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="title" class="control-label col-sm-4">Titre :</label>
-				<input type="text" class="form-control" id="title" name="title" required value={{$video->title}}>
+				<input type="text" class="form-control" id="title" name="title" required value="{{$video->title}}">
 			</div>
 
 			<div class="form-group">
@@ -53,14 +53,14 @@
 			</div>
 
 			<div class="form-group">
-				<label for="poster" class="control-label col-sm-2">Poster :</label>
+				<label for="poster" class="control-label col-xs-12">Poster :</label>
 				
-				<div class="col-sm-3 col-xs-6">
+				<div class="col-xs-3 col-md-4 col-lg-3">
 				@if(isset($video->poster))
 					<img src="{{URL::asset('img/posters/'.$video->poster)}}" alt="{{$video->title}}">
 				@endif
 				</div>
-				<div class="col-sm-7 col-xs-9">
+				<div class="col-xs-9 col-md-8 col-lg-9 r-p">
 					<input type="file" class="form-control" id="poster" name="poster" value="{{$video->poster}}">	
 				</div>
 			</div>

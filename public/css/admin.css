@@ -6,7 +6,7 @@
 	text-align: right;
 	font-size: 1.6rem;
 	background-color: white;
-	margin: 5px 0;
+	margin: 20px 0;
 }
 
 #nav_admin li{
@@ -31,6 +31,14 @@
 
 h1, h2{
 	text-align: center;
+}
+
+h1{
+	text-transform: uppercase;
+}
+
+h2{
+	font-size: 1.8rem;
 }
 
 table, td, tr, th{
@@ -68,4 +76,14 @@ form img{
 
 form input{
 	margin:0;
+}
+
+form input[type="submit"]{
+	margin-top: 25px;
+	background-color: rgb(0,195,141);
+	color:white;
+}
+
+#videos form input[type="submit"]{
+	margin-top: 83px;
 }

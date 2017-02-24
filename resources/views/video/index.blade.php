@@ -13,7 +13,11 @@
 	<h2>Listes des vidéos</h2>
 
 	@if(isset($success))
-        <div class="alert alert-success"> {{$success}} </div>
+        <div class="alert alert-success" role="alert"> {{$success}} </div>
+    @endif
+
+    @if(session('success'))
+        <div class="alert alert-success" role="alert"> {{session('success')}} </div>
     @endif
 
 	<p class="ajout"><a href="{{ route('videos.create')}}">Ajouter une video</a></p>

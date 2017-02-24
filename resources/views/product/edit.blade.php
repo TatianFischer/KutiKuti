@@ -62,6 +62,7 @@
 				@endif
 				</div>
 				<div class="col-sm-7 col-xs-9">
+					<span class="help-block col-sm-6">1000px/1000px max</span>
 					<input type="file" class="form-control" id="photo" name="photo" value="{{$product->photo}}">	
 				</div>
 			</div>

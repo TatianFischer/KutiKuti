@@ -12,7 +12,11 @@
 	<h1>Gestion des produits</h1>
 	<h2>Listes des produits</h2>
 
-	@if(isset($success))
+	@if(session('success'))
+        <div class="alert alert-success"> {{session('success')}} </div>
+    @endif
+
+    @if(isset($success))
         <div class="alert alert-success"> {{$success}} </div>
     @endif
 
@@ -37,7 +41,7 @@
 
 					<td>{{$product->couleur}}</td>
 
-					<td>{{$product->price}}</td>
+					<td>{{$product->price}} €</td>
 
 					<td><img src="{{URL::asset('img/products/'.$product->photo)}}" alt="{{$product->title}}"></td>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Client :  localhost
--- Généré le :  Jeu 23 Février 2017 à 21:04
--- Version du serveur :  5.7.11
--- Version de PHP :  5.6.19
+-- Client :  127.0.0.1
+-- Généré le :  Ven 24 Février 2017 à 10:32
+-- Version du serveur :  10.1.13-MariaDB
+-- Version de PHP :  5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,21 +32,21 @@ CREATE TABLE `products` (
   `couleur` enum('gris','parme') COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
   `photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Contenu de la table `products`
 --
 
 INSERT INTO `products` (`id`, `modele`, `couleur`, `price`, `photo`) VALUES
-(1, 'Lapin Kuti', 'gris', 28, 'LapiKuti.png'),
-(2, 'Lapin Kuti', 'parme', 28, 'LapiKuti.png'),
-(3, 'Kuti1', 'gris', 8, 'Kuti1.png'),
-(4, 'Kuti1', 'parme', 8, 'Kuti1.png'),
-(5, 'Kuti3', 'gris', 8, 'Kuti3.png'),
-(6, 'Kuti3', 'parme', 8, 'Kuti3.png'),
-(7, 'Kuti5', 'gris', 8, 'Kuti5'),
-(8, 'Kuti5', 'parme', 8, 'Kuti5');
+(1, 'LapiKuti', 'gris', 28, 'lapikuti_gris.png'),
+(2, 'LapiKuti', 'parme', 28, 'lapikuti_parme.png'),
+(3, 'Kuti1', 'gris', 8, 'kuti1_gris.png'),
+(4, 'Kuti1', 'parme', 8, 'kuti1_parme.png'),
+(5, 'Kuti3', 'gris', 8, 'kuti3_gris.png'),
+(6, 'Kuti3', 'parme', 8, 'kuti3_parme.png'),
+(7, 'Kuti5', 'gris', 8, 'kuti5_gris.png'),
+(8, 'Kuti5', 'parme', 8, 'kuti5_parme.png');
 
 --
 -- Index pour les tables exportées

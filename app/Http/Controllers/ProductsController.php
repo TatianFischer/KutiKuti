@@ -24,7 +24,7 @@ class ProductsController extends Controller
             'modele' => 'required',
             'couleur' => 'required|in:"parme","gris"',
             'price' => 'required|integer',
-            'photo' => 'required|image|dimensions:max_width=500,max_height=500',
+            'photo' => 'required|image|dimensions:max_width=1000,max_height=1000',
         ]);
 
         $product->modele = $request->modele;
@@ -73,7 +73,7 @@ class ProductsController extends Controller
         }
 
         $product->update();
-        $request->session()->reflash('success', 'Produit modifié avec succès');
+        session()->flash('success', 'Video modifiée avec succès');
         return redirect()->route("products.index");
     }
 

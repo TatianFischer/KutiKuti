@@ -77,7 +77,7 @@ class VideosController extends Controller
         }
 
         $video->update();
-        $request->session()->reflash('success', 'Video modifiée avec succès');
+        session()->flash('success', 'Video modifiée avec succès');
         return redirect()->route("videos.index");
     }
 

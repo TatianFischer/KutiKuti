@@ -54,6 +54,7 @@
 
 			<div class="form-group">
 				<label for="photo" class="control-label col-sm-4">Photo :</label>
+				<span class="help-block col-sm-6">1000px/1000px max</span>
 				<input type="file" class="form-control" id="photo" name="photo" required>
 			</div>
 		</div>
