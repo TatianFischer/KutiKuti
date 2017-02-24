@@ -86,7 +86,7 @@ Route::delete('produits/{product}', 'ProductsController@destroy')->name('product
 /*------------------------------------------
 --------------------------------------------*/
 // Gestion du formulaire de connexion
-Route::post('login', 'SessionsController@store');
+Route::post('login', 'SessionsController@store')->name('login');
 
 // Gestion de la déconnexion
 Route::get('logout', 'SessionsController@destroy')->name('logout');

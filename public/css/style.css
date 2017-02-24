@@ -44,7 +44,7 @@ body {
   background-color: white;
 }
 
-.btn-primary {
+#barre_navigation .btn-primary {
     background-color: white;
     border-width: 03px; 
     border-color: purple;
@@ -81,6 +81,32 @@ nav .logo {
     width: 100%;
     padding-top: 0;
 }
+
+
+/*Navbar admin*/
+#nav_admin{
+    text-align: right;
+    font-size: 1.6rem;
+    background-color: white;
+    margin: 20px 0;
+}
+
+#nav_admin li{
+    border: 3px solid white;
+}
+
+#nav_admin li:hover{
+    border: 3px solid rgb(0,255,141);
+}
+
+#nav_admin li a{
+    background-color: white;
+    color: rgb(0,195,141);
+    margin:0;
+    border-radius: 0;
+    border: 0;
+}
+
 
 /*Padding / logo */
 #apropos,#tutos, #form_precommande{

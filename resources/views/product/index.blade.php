@@ -7,8 +7,6 @@
 @section('content')
 <div class="container" id="products">
 
-	@include('layouts.admin_nav')
-
 	<h1>Gestion des produits</h1>
 	<h2>Listes des produits</h2>
 

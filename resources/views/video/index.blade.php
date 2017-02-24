@@ -7,8 +7,6 @@
 @section('content')
 <div class="container" id="videos">
 
-	@include('layouts.admin_nav')
-
 	<h1>Gestion des vidéos</h1>
 	<h2>Listes des vidéos</h2>
 

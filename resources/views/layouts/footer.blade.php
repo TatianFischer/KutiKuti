@@ -18,15 +18,8 @@
 
             <div class="modal-body">
                 
-                @if(count($errors))
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
+                <!-- MESSAGE D' ALERTE -->
+                <div class="alert" hidden></div>
  
 
                 <form id="formRegister" class="form-horizontal" role="form" method="POST" action="{{ url('login') }}">

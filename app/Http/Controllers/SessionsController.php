@@ -14,6 +14,7 @@ class SessionsController extends Controller
 	{
 
 		$this->middleware('guest', ['except' => 'destroy']);
+		$this->middleware('ajax', ['only' => 'store']);
 
 	}
 
@@ -23,16 +24,20 @@ class SessionsController extends Controller
 		// En cas de succès, la connexion est faite automatiquement
 		if(! auth()->attempt(request(['pseudo', 'password']))){
 
-			return back()->withErrors([
+			$message = [
+				'type' => 'danger',
 				'message' => 'Erreur lors de la connexion. Veuillez réessayer'
-			]);
+			];
 
 		} else {
 
-			return redirect()->route('videos.index');
+			$message = [
+				'type' => 'success',
+				'message' => 'Bonne journée !'
+			];
 		}
 
-		// Redirection
+		return json_encode($message);
 	}
 
 
