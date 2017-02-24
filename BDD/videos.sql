@@ -39,7 +39,7 @@ CREATE TABLE `videos` (
 -- Contenu de la table `videos`
 --
 
-INSERT INTO `videos` (`id`, `title`, `step`, `tag`, `slug`, `image`) VALUES
+INSERT INTO `videos` (`id`, `title`, `step`, `tag`, `slug`, `poster`) VALUES
 (1, 'Le cloutage', 1, '197099349', 'etape_1_cloutage',  'poster_cloutage.png'),
 (2, 'Le Pliage', 2, '197099822', 'etape_2_pliage', 'poster_pliage.png'),
 (3, 'La Couture', 3, '197099921', 'etape_3_couture', 'poster_couture.png'),

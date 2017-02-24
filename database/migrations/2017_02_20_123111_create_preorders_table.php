@@ -21,6 +21,7 @@ class CreatePreordersTable extends Migration
                 ->on('customers')
                 ->onDelete('no action')
                 ->onUpdate('cascade');
+            $table->integer('total');
             $table->timestamps('date_preorder');
         });
     }
