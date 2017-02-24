@@ -80,3 +80,11 @@ Route::put('produits/{product}', 'ProductsController@update')->name('products.up
 
 // Suppression d'un produit
 Route::delete('produits/{product}', 'ProductsController@destroy')->name('products.destroy');
+
+/*------------------------------------------
+--------------------------------------------*/
+// Gestion du formulaire de connexion
+Route::post('login', 'SessionsController@store');
+
+// Gestion de la déconnexion
+Route::get('logout', 'SessionsController@destroy')->name('logout');

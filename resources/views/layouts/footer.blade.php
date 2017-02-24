@@ -17,10 +17,19 @@
             </div>
 
             <div class="modal-body">
-
+                
+                @if(count($errors))
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
  
 
-                <form id="formRegister" class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+                <form id="formRegister" class="form-horizontal" role="form" method="POST" action="{{ url('login') }}">
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -32,7 +41,7 @@
 
                         <div class="col-md-6">
 
-                            <input type="text" class="form-control" name="pseudo">
+                            <input type="text" class="form-control" name="pseudo" required>
 
                             <small class="help-block"></small>
 
@@ -49,10 +58,7 @@
 
                         <div class="col-md-6">
 
-                            <input type="password" class="form-control" name="password">
-
-                            <small class="help-block"></small>
-
+                            <input type="password" class="form-control" name="password" required>
                         </div>
 
                     </div>
@@ -86,7 +92,11 @@
 
 </div>
 
-<button type="button" data-toggle="modal" data-target="#ConnexionModal" style="color: #808080;">lien vers l'admin</button>
+@if(Auth::check())
+    <a href="{{route('logout')}}"><button type="button" style="color: #808080;">Déconnexion</button></a>
+@else
+    <button type="button" data-toggle="modal" data-target="#ConnexionModal" style="color: #808080;">lien vers l'admin</button>
+@endif
 
 <div class="col-xs-12 map">
 <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2623.139139853995!2d2.389043088540035!3d48.89368540395556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x47e66dcb97e5f155%3A0xcf11e2120157690f!2sGalerie+de+la+Villette%2C+75019+Paris!3m2!1d48.8924398!2d2.3881942!5e0!3m2!1sfr!2sfr!4v1487684536483" frameborder="0" style="border:0" allowfullscreen></iframe>
