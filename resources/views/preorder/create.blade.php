@@ -6,6 +6,7 @@
 <link href="{{URL::asset('css/preco.css')}}" rel="stylesheet">
 @endpush
 
+
 @section('content')
 <div id="content">
     <h1>Formulaire de précommande</h1>
