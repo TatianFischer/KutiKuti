@@ -71,6 +71,10 @@ nav .logo {
 
 /* caroussel */
 
+.container{
+  padding-top: 100px; 
+}
+
 .slider {
     padding: 0;
 }

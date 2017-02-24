@@ -1,9 +1,12 @@
-
 @extends ('layouts.master')
 
+@push('css')
 <link href='http://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
 <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/preco.css">
+<link href="{{URL::asset('css/preco.css')}}" rel="stylesheet">
+@endpush
+
+@section('content')
 <div id="content">
     <h1>Formulaire de précommande</h1>
 
@@ -22,20 +25,20 @@
         </p>
 
         <p>
-            <label for="email" class="icon-home"> email</label>
+            <label for="email" class="icon-envelope"> email</label>
                 <span class="required">*</span>
             <input type="text" name="email" id="email" placeholder="Entrez votre email" required="required" />
         </p>
 
         <p>
-            <label for="address" class="icon-envelope"> Adresse
+            <label for="address" class="icon-home"> Adresse
                 <span class="required">*</span>
             </label>
             <input type="text" name="address" id="address" placeholder="Entrez votre adresse" required="required" />
         </p>
 
         <p>
-            <label for="cp" class="icon-envelope"> code postale
+            <label for="cp" class="icon-envelope"> code postal
                 <span class="required">*</span>
             </label>
             <input type="text" name="cp" id="cp" placeholder="Entrez votre code postal" required="required" />
@@ -48,3 +51,5 @@
 
     </form>
 </div>
+
+@endsection
