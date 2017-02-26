@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDetailsPreorderTable extends Migration
+class CreatePreorderProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -28,7 +28,6 @@ class CreateDetailsPreorderTable extends Migration
                 ->onDelete('no action')
                 ->onUpdate('cascade');
             $table->integer('quantity');
-            $table->timestamps();
         });
     }
 
@@ -39,6 +38,11 @@ class CreateDetailsPreorderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('preorder_product');
+        Schema::table('preorder_product', function(Blueprint $table){
+            $table->dropForeign('preorder_product_product_id_foreign');
+            $table->dropForeign('preorder_product_preorder_id_foreign');
+        });
+
+        Schema::drop('preorder_product');
     }
 }

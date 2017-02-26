@@ -36,7 +36,7 @@ Route::get('preorder', 'PreordersController@index')->name('preorders.index');
 
 
 // Page admin avec détail de la précommande
-Route::get('preorder/show', 'PreordersController@show')->name('preorders.show');
+Route::get('preorder/{preorder}', 'PreordersController@show')->name('preorders.show');
 
 // Formulaire pour supprimer le précommande
 Route::delete('preorder/{preorder}', 'PreordersController@destroy')->name('preorders.destroy');
