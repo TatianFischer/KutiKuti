@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid r-p" id="main">
+<div class="container-fluid r-p content" id="main">
 
         <div class="row r-m">
 
@@ -43,3 +43,7 @@
     <!-- /.container -->
 
 @endsection
+
+@push('js')
+   <script type="text/javascript" src="{{URL::asset('js/aleatoire.js')}}"></script> 
+@endpush

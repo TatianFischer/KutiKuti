@@ -109,8 +109,9 @@ nav .logo {
 
 
 /*Padding / logo */
-#apropos,#tutos, #form_precommande{
+#apropos, #tutos, #form_precommande{
     padding-top: 120px;
+    position: relative;
 }
 
 
@@ -170,11 +171,12 @@ nav .logo {
 }
 
 
-#apropos img {
+#apropos .cube img {
     width: 75%;
 }
 
 #apropos_image img{
+    width: 75%;
     box-shadow: -10px -10px 0 rgb(107, 255, 189);
 }
 
@@ -237,6 +239,13 @@ nav .logo {
     padding-top: 5px;
 }
 
+
+/* Blocs aléatoires*/
+
+img.aleatoire{
+    width: initial;
+    height: initial
+}
 
 /* footer */
 

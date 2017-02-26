@@ -17,7 +17,7 @@
 	</div>
 -->
 
-<div class="container" id="tutos">
+<div class="container content" id="tutos">
 <?php $i=0 ?>
 @foreach($videos as $video)
 
@@ -49,3 +49,7 @@
 </div>
 
 @endsection
+
+@push('js')
+   <script type="text/javascript" src="{{URL::asset('js/aleatoire.js')}}"></script> 
+@endpush

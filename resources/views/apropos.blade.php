@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container" id="apropos">
+<div class="container content" id="apropos">
 	<div class="row">
 		<div class="col-md-12 desc1">
 			<div class="col-md-4 paragraphe">
 				<p id="apropos_paragraphe">Kutì Kutì est un jeu d'assemblage lumineux et interactif.<br> Par le montage de volumes abstraits et de circuits éléctroniques simples,<br> les enfants définissent la création de formes animales imaginaires</p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 cube">
 				<img src="{{URL::asset('img/image1.jpg')}}" alt=""">
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 cube">
 				<img src="{{URL::asset('img/image2.jpg')}}" alt=""">
 			</div>
 
@@ -39,3 +39,7 @@
 
 
 @endsection
+
+@push('js')
+   <script type="text/javascript" src="{{URL::asset('js/aleatoire.js')}}"></script> 
+@endpush
