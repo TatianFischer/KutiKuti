@@ -72,7 +72,7 @@
 				<td>{{$preorder->created_at->format('d/m/Y')}}</td>	
 
 				<td>
-					<form action="{{route('preorders.show', ['preorder' => $preorder->id])}}" method="get" id="details">
+					<form action="{{route('preorders.show', ['preorder' => $preorder->id])}}" method="get" class="details">
 						<button type="submit" class="btn btn-primary">Détails</button>
 					</form>
 				</td>

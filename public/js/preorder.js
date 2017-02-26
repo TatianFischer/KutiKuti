@@ -1,5 +1,5 @@
 $(function(){
-	$('#details').on('submit', function(e){
+	$('.details').on('submit', function(e){
 		e.preventDefault();
 		
 		$.ajax({
