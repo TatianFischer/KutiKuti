@@ -7,6 +7,10 @@
 @section('content')
 	<h1>Précommandes</h1>
 
+	@if(isset($success))
+        <div class="alert alert-success"> {{$success}} </div>
+    @endif
+
 	<h2 hidden>Détails de la commande</h2>
 
 	<table border="1" summary="Informations sur l'acheteur" id="customer" hidden>	
@@ -34,7 +38,7 @@
 				<th>Couleur</th>
 				<th>Quantité</th>
 				<th>Prix unitaire</th>
-				<!-- <th>Total sur le produit</th> -->
+				<th>Total sur le produit</th>
 			</tr>
 		</thead>
 
@@ -43,6 +47,9 @@
 		</tbody>
 
 	</table>
+
+
+	<h2>Liste des commandes</h2>
 		
 	<table border="1" summary="Tableau résumant les commandes">
 		<thead>
@@ -78,7 +85,7 @@
 				</td>
 
 				<td>
-					<form action="{{--route('', ['preorder' => $preorder->id])--}}" method="post">
+					<form action="{{route('preorders.destroy', ['preorder' => $preorder->id])}}" method="post">
 						{{ csrf_field() }}
 						{{ method_field('DELETE') }}
 						<button type="submit" class="btn btn-danger">Suppression</button>

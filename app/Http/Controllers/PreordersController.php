@@ -79,4 +79,12 @@ class PreordersController extends Controller{
   	public function create(){
     	return view('preorder.create');
 	}
+
+
+	public function destroy(Preorder $preorder){
+		$preorder->products()->detach();
+		$preorder->delete();
+
+		return back()->with('success', 'Précommande supprimée avec succès');
+	}
 }

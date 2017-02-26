@@ -9,7 +9,10 @@ $(function(){
             dataType: "json",
 
         	success: function(data){
-        		console.log(data);
+                // Vider les précédentes données
+        		$('#customer tbody').empty();
+                $('#products_details tbody').empty();
+
         		$('h2').show();
 
                 $('#customer').show();
@@ -31,9 +34,14 @@ $(function(){
                 	.append($('<td>').text(data[i].couleur))
                 	.append($('<td>').text(data[i].quantity))
                 	.append($('<td>').text(data[i].price+" €"))                	
-                	//.append($('<td>').text((data[i].price*data[i].quantity)+" €"))                	
+                	.append($('<td>').text((data[i].price*data[i].quantity)+" €"))                	
                 		.appendTo("#products_details");
                 }
+
+                $('<tr>')
+                    .append($('<td colspan=3>').text('Montant total'))
+                    .append($('<td colspan=2>').text(data["0"].total+" €"))
+                        .appendTo("#products_details");
                 
             },
 

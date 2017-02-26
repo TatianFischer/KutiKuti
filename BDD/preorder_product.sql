@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  localhost
--- Généré le :  Sam 25 Février 2017 à 16:12
+-- Généré le :  Dim 26 Février 2017 à 11:36
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.19
 
@@ -39,13 +39,24 @@ CREATE TABLE `preorder_product` (
 
 INSERT INTO `preorder_product` (`id`, `preorder_id`, `product_id`, `quantity`) VALUES
 (1, 1, 1, 1),
-(2, 1, 2, 1),
-(3, 1, 3, 1),
-(4, 1, 4, 1),
-(5, 2, 1, 1),
-(6, 2, 2, 2),
-(7, 2, 3, 2),
-(8, 2, 4, 1);
+(2, 1, 3, 1),
+(3, 1, 5, 1),
+(4, 1, 7, 1),
+(5, 2, 2, 1),
+(6, 2, 4, 2),
+(7, 2, 6, 2),
+(8, 2, 8, 1),
+(9, 3, 1, 30),
+(10, 3, 2, 30),
+(11, 3, 3, 70),
+(12, 3, 4, 70),
+(13, 3, 5, 70),
+(14, 3, 6, 70),
+(15, 3, 7, 70),
+(16, 3, 8, 70),
+(17, 4, 2, 1),
+(18, 4, 3, 2),
+(19, 4, 7, 2);
 
 --
 -- Index pour les tables exportées
@@ -67,7 +78,7 @@ ALTER TABLE `preorder_product`
 -- AUTO_INCREMENT pour la table `preorder_product`
 --
 ALTER TABLE `preorder_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
