@@ -30,7 +30,7 @@
                 </ul>
                <form class="navbar-form navbar-right inline-form">
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary btn-sm"><a href="{{route('preorders.create')}}">pré-commande</a></button>
+                  <a href="{{route('preorders.create')}}" class="btn btn-success">pré-commande</a>
                 </div>
               </form>
             </div>

@@ -34,21 +34,26 @@ body {
     font-size: 25px;
 }
 
+/* bouton préco*/
+
+
+
 .form-group {
     margin: 18px;
     padding: 10px;
 }
 
-.form-group a {
+.form-group a.btn-success {
   color: black;
   background-color: white;
+  border-width: 03px;
+  border-color: purple;
+  box-shadow:-05px 05px 0px purple;
 }
 
-#barre_navigation .btn-primary {
-    background-color: white;
-    border-width: 03px; 
-    border-color: purple;
-    box-shadow:-05px 05px 0px purple; 
+.form-group a.btn-success:hover, .form-group a.btn-success:visited{
+  background-color: white;
+  border-color: purple;
 }
 
 nav {
@@ -116,7 +121,7 @@ nav .logo {
 
 
 .container{
-  padding-top: 100px; 
+  padding-top: 100px;
 }
 
 
