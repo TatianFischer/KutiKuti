@@ -6,7 +6,6 @@
 <link href="{{URL::asset('css/preco.css')}}" rel="stylesheet">
 @endpush
 
-
 @section('content')
 <div id="content">
     <h1>Formulaire de précommande</h1>
@@ -45,6 +44,14 @@
             <input type="text" name="cp" id="cp" placeholder="Entrez votre code postal" required="required" />
         </p>
 
+
+
+
+
+
+
+
+
         <p class="indication">Les champs avec une
             <span class="required"> * </span>sont obligatoires</p>
 
@@ -52,5 +59,5 @@
 
     </form>
 </div>
-@endsection
 
+@endsection

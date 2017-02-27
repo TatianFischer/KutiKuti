@@ -34,6 +34,10 @@ body {
     font-size: 25px;
 }
 
+/* bouton préco*/
+
+
+
 .form-group {
     margin: 18px;
     padding: 10px;
@@ -42,14 +46,12 @@ body {
 .form-group a {
   color: black;
   background-color: white;
+  border-width: 03px;
+  border-color: purple;
+  box-shadow:-05px 05px 0px purple;
 }
 
-.btn-primary {
-    background-color: white;
-    border-width: 03px; 
-    border-color: purple;
-    box-shadow:-05px 05px 0px purple; 
-}
+
 
 nav {
     position: relative;
@@ -89,7 +91,7 @@ nav .logo {
 
 
 .container{
-  padding-top: 100px; 
+  padding-top: 100px;
 }
 
 
