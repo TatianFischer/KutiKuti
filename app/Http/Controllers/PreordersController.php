@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Relations\Concerns\InteractsWithPivotTable;
 use App\Preorder;
+use App\Product;
 use App\PreorderProduct;
 use Carbon\Carbon;
 
@@ -13,14 +15,14 @@ class PreordersController extends Controller{
 
 	{
 
-		$this->middleware('auth', ['except' => 'create', 'store']);
+		//$this->middleware('auth', ['except' => 'create', 'store']);
 		// $this->middleware('ajax', ['only' => 'index']);
 
 	}
 
 	public function index(){
 		$preorders = Preorder::all();
-		
+
 		return view('preorder.index', compact('preorders'));
 	}
 
@@ -76,8 +78,75 @@ class PreordersController extends Controller{
 		return $arrayProducts;
 	}
 
-  	public function create(){
-    	return view('preorder.create');
+  public function create(){
+		$products = Product::all();
+    	return view('preorder.create', compact('products'));
+	}
+
+	public function store(Request $request, Preorder $preorder){
+		$quantities = $this->verificationQuantity($request);
+
+		$total = $this->calculMontantCommande($request, $quantities);
+
+		$this->validate($request,[
+			'lastname' => 'required|min:2',
+			'firstname' => 'required|min:2',
+			'email' => 'email',
+			'address' => 'required|min:2',
+			'city' => 'required|min:2',
+			'cp' => 'numeric|digits:5'
+		]);
+
+		$preorder->lastname 	= $request->lastname;
+		$preorder->firstname 	= $request->firstname;
+		$preorder->email 		= $request->email;
+		$preorder->address 		= $request->address;
+		$preorder->city 		= $request->city;
+		$preorder->cp 			= $request->cp;
+		$preorder->total 		= $total;
+
+		//dd($preorder);
+		$preorder->save();
+
+		// Ajout à la table pivot
+		$products = $request->product;
+		foreach ($products as $key => $product){
+			// le table quantities commence à la valeur 0
+			$product_id = intval($product - 1);
+			//dd($quantities[$product]);
+			$preorder->products()->attach($product, ['quantity' => $quantities[$product_id]]);
+		}
+	
+		return back()->with('success', 'Commande envoyée avec succès');
+	}
+
+	private function verificationQuantity($request){
+		$quantity = $request->quantity;
+
+		foreach($quantity as $value)
+		{
+			$value = trim($value);
+
+			if(is_numeric($value) || $value == "")
+			{
+				$quantities[] = $value;
+			}
+		}
+
+		return $quantities;
+	}
+
+	private function calculMontantCommande($request, $quantities){
+
+		// Appel de la base de donnée pour le prix
+		$prices = Product::pluck('price');
+		
+		$montant="";
+
+		for($i=0; $i<count($prices); $i++) {
+			$montant += $prices[$i]*$quantities[$i];
+		}
+		return $montant;
 	}
 
 
