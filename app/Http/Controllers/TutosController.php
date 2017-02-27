@@ -10,8 +10,10 @@ class TutosController extends Controller
     	return view('tutos', compact('videos'));
     }
 
-    public function show(Video $video) {
-    	return view('', compact('video'));
+    public function show($id) {
+    	$video = Video::find($id);
+
+    	return view('tutos_video', compact('video'));
     }
 }
 
