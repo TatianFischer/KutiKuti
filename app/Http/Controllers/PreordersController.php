@@ -13,7 +13,7 @@ class PreordersController extends Controller{
 
 	{
 
-		$this->middleware('auth');
+		$this->middleware('auth', ['except' => 'create', 'store']);
 		// $this->middleware('ajax', ['only' => 'index']);
 
 	}

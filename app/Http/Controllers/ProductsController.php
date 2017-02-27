@@ -8,7 +8,15 @@ use App\Product;
 
 class ProductsController extends Controller
 {
-    public function index(){
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    public function index()
+    {
     	$products = Product::all();
     	return view('product.index', compact('products'));
     }

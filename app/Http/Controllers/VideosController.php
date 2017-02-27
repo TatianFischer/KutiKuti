@@ -8,6 +8,11 @@ use App\Video;
 
 class VideosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
     	$videos = Video::all();
     	return view('video.index', compact('videos'));

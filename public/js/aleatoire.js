@@ -1,5 +1,5 @@
 $(function(){
-  var pageHeight = $(document.documentElement).height();
+  var pageHeight = $('body').height();
   //console.log(pageHeight);
   var pageWidth = $(document.documentElement).width();
   //console.log(pageWidth);
@@ -17,6 +17,6 @@ $(function(){
       .attr({'src' : 'img/aleatoire/kuti'+numeroImage+'.png', 'alt' : 'petit carré'})
       .addClass('aleatoire')
       .css({'position' : 'absolute', 'z-index' : 1, 'top' : randomTop+'%', 'left' : randomLeft+'%'})
-        .appendTo('.content');
+        .appendTo('body');
   }
 });
