@@ -292,9 +292,25 @@ nav .logo {
     padding-top: 5px;
 }
 
-.tutos2 iframe {
+.tutos2{
+    position: relative;
     width: 100%;
-    height: 650px;
+}
+
+.tutos2:before{
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+}
+
+
+.tutos2 iframe {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
 
 
@@ -360,7 +376,10 @@ iframe {
     font-size: 15px;
 }
 
-
+#formRegister{
+    color: black;
+    font-size: 1.4rem;
+}
 
 /*==========  Non-Mobile First Method  ==========*/
 
@@ -393,7 +412,6 @@ iframe {
         text-align: center;
     }
 
-
 }
 
 /* Small Devices, Tablets */
@@ -404,11 +422,12 @@ iframe {
     #tutos .poster:nth-child(2){
         margin: 20px 0;
     }
+
 }
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
-   
+    
 }
 
 /* Custom, iPhone Retina */

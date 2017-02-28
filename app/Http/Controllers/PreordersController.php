@@ -83,7 +83,17 @@ class PreordersController extends Controller{
 	}
 
 	public function store(Request $request, Preorder $preorder){
-		$quantities = $this->verificationQuantity($request);
+		/*$quantity = $request->quantity;
+		foreach ($quantity as $value) {
+			if(is_numeric($value) || $value == "")
+			{*/
+				$quantities = $this->verificationQuantity($request);
+		/*	}
+			else
+			{
+				return redirect()->back()->withErrors('Veuillez rentrer un nombre dans le champs des quantités');
+			}
+		}*/
 
 		$total = $this->calculMontantCommande($request, $quantities);
 
@@ -93,7 +103,8 @@ class PreordersController extends Controller{
 			'email' => 'email',
 			'address' => 'required|min:2',
 			'city' => 'required|min:2',
-			'cp' => 'numeric|digits:5'
+			'cp' => 'numeric|digits:5',
+			'quantity.*' => 'numeric|nullable'
 		]);
 
 		$preorder->lastname 	= $request->lastname;
@@ -126,10 +137,8 @@ class PreordersController extends Controller{
 		{
 			$value = trim($value);
 
-			if(is_numeric($value) || $value == "")
-			{
-				$quantities[] = $value;
-			}
+			$quantities[] = $value;
+
 		}
 
 		return $quantities;

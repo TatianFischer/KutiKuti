@@ -21,7 +21,7 @@ Route::get('apropos', function() {
 
 Route::get('tutos', 'TutosController@index')->name('tutos');
 
-Route::get('tutos/{tutos}', 'TutosController@show')->name('tutos.show');
+Route::get('tutos/{id}-{tutos}', 'TutosController@show')->where(['id' => '[0-9]'])->name('tutos.show');
 
 /*-----------------------------------------
 -------------------------------------------*/
