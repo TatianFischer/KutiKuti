@@ -33,9 +33,11 @@ class PreordersController extends Controller{
 
 		// On récupère le détail
 		$o_products = $o_preorder->products;
+
 		// Transformation en array
 		$products = $this->productsArray($o_products, $o_preorder);
 
+		// Fusion des deux tableaux pour renvoyer sous format jSON
 		$preorder_product = array_merge($preorder, $products);
 		return json_encode($preorder_product);
 	}
@@ -54,7 +56,7 @@ class PreordersController extends Controller{
 		return $array;
 	}
 
-	private function productsArray($objects, $preorder){
+	private function productsArray($products, $preorder){
 		// Récupération des quantités
 		$quantities = $preorder->preorder_products;
 
@@ -62,11 +64,11 @@ class PreordersController extends Controller{
 			$arrayQuantities[] = $quantity->quantity;
 		}
 		$i = 1;
-		foreach ($objects as $key => $object) {
+		foreach ($products as $key => $product) {
 			$array = [
-				'modele'	=> 	$object->modele,
-				'couleur'	=> 	$object->couleur,
-				'price'		=> 	$object->price,
+				'modele'	=> 	$product->modele,
+				'couleur'	=> 	$product->couleur,
+				'price'		=> 	$product->price,
 				'quantity'	=>	$arrayQuantities[$i-1]
 			];
 
@@ -77,23 +79,15 @@ class PreordersController extends Controller{
 		return $arrayProducts;
 	}
 
-  public function create(){
+  	public function create(){
 		$products = Product::all();
     	return view('preorder.create', compact('products'));
 	}
 
 	public function store(Request $request, Preorder $preorder){
-		/*$quantity = $request->quantity;
-		foreach ($quantity as $value) {
-			if(is_numeric($value) || $value == "")
-			{*/
-				$quantities = $this->verificationQuantity($request);
-		/*	}
-			else
-			{
-				return redirect()->back()->withErrors('Veuillez rentrer un nombre dans le champs des quantités');
-			}
-		}*/
+
+		$quantities = $this->verificationQuantity($request);
+
 
 		$total = $this->calculMontantCommande($request, $quantities);
 
