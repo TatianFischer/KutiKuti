@@ -21,7 +21,7 @@ Route::get('apropos', function() {
 
 Route::get('tutos', 'TutosController@index')->name('tutos');
 
-Route::get('tutos/{tutos}', 'TutosController@show')->name('tutos.show');
+Route::get('tutos/{id}-{tutos}', 'TutosController@show')->where(['id' => '[0-9]'])->name('tutos.show');
 
 /*-----------------------------------------
 -------------------------------------------*/
@@ -32,14 +32,14 @@ Route::get('preorder/create', 'PreordersController@create')->name('preorders.cre
 Route::post('preorder', 'PreordersController@store')->name('preorders.store');
 
 // Page admin avec la listes des précommandes
-Route::get('preorder', 'PreordersController@index')->name('preorders.index');
+Route::get('preorder', 'PreordersController@index')->name('preorders.index')->middleware('auth');
 
 
 // Page admin avec détail de la précommande
-Route::get('preorder/{preorder}', 'PreordersController@show')->name('preorders.show');
+Route::get('preorder/{preorder}', 'PreordersController@show')->name('preorders.show')->middleware('auth');
 
 // Formulaire pour supprimer le précommande
-Route::delete('preorder/{preorder}', 'PreordersController@destroy')->name('preorders.destroy');
+Route::delete('preorder/{preorder}', 'PreordersController@destroy')->name('preorders.destroy')->middleware('auth');
 
 
 /*------------------------------------------

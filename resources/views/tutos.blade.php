@@ -17,7 +17,7 @@
 
 			<div class="col-sm-4 poster">
 					<figure>
-						<a href="{{route('tutos.show',['videos' => $video->id])}}">
+						<a href="{{route('tutos.show',[$video->id,$video->slug])}}">
 							<img src="{{URL::asset('img/posters/'.$video->poster)}}" alt="">
 							<figcaption>Etape #{{$video->step}} <br> {{$video->title}}</figcaption>
 						</a>

@@ -13,7 +13,7 @@
             <div class="modal-header">
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Se connecter</span></button>
-                <h4 class="modal-title" id="myModalLabel">connexion</h4>
+                <h4 class="modal-title" id="myModalLabel">Connexion</h4>
 
             </div>
 
@@ -31,7 +31,7 @@
 
                     <div class="form-group">
 
-                        <label class="col-md-4 control-label" style="color: black;">pseudo</label>
+                        <label class="col-md-4 control-label">Pseudo</label>
 
                         <div class="col-md-6">
 
@@ -48,7 +48,7 @@
 
                     <div class="form-group">
 
-                        <label class="col-md-4 control-label" style="color: black;">Password</label>
+                        <label class="col-md-4 control-label">Password</label>
 
                         <div class="col-md-6">
 
