@@ -293,3 +293,20 @@ h1 {
     display: inline-block;
     width: 55%;
 }
+
+#content ul{
+    list-style: none;
+    background-color: white;
+    margin:0 10px;
+    padding-left: 10px;
+}
+
+#content ul li{
+    width: 100%;
+}
+
+#content ul li a{
+    color: black;
+    font-size: 1.2rem;
+    width: 100%;
+}

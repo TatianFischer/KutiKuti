@@ -63,6 +63,7 @@
                 <span class="required">*</span>
             </label>
             <input type="text" name="cp" id="cp" placeholder="Entrez votre code postal" required="required" />
+            <ul class="cp_list"></ul>
         </div>
 
         <div class="group">
@@ -70,6 +71,7 @@
                 <span class="required">*</span>
             </label>
             <input type="text" name="city" id="city" placeholder="Entrez votre ville" required="required" />
+            <ul class="city_list"></ul>
         </div>
 
         <hr>
@@ -96,3 +98,8 @@
 
 
 @endsection
+
+
+@push('js')
+    <script src="{{URL::asset('js/preorder.js')}}"></script>
+@endpush
