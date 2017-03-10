@@ -5,20 +5,42 @@
 	<div class="row">
 
 		<div class="col-md-12 desc1">
-
-			<div class="col-md-4 paragraphe">
-				<p id="apropos_paragraphe">Kutì Kutì est un jeu d'assemblage lumineux et interactif.<br> Par le montage de volumes abstraits et de circuits éléctroniques simples,<br> les enfants définissent la création de formes animales imaginaires</p>
+			<div class="col-md-3 r-p" id="apropos_paragraphe">
+				<div>
+					<p>
+						Kutì Kutì est un jeu d'assemblage lumineux et interactif.<br> Par le montage de volumes abstraits et de circuits éléctroniques simples,<br> les enfants définissent la création de formes animales imaginaires
+					</p>
+				</div>
 			</div>
 
-
-			<div class="col-md-4 img1">
+			<div class="col-md-3 col-md-offset-1 img1 r-p">
 				<img src="{{URL::asset('img/image1.jpg')}}" alt=""">
 			</div>
 
-			<div class="col-md-4 img1">
+			<div class="col-md-3 col-md-offset-1 img1 r-p">
 				<img src="{{URL::asset('img/image2.jpg')}}" alt=""">
 			</div>
+		</div>
 
+		<div class="col-md-12 desc1_slider">
+			<div class="col-sm-5 r-p" id="apropos_paragraphe">
+				<div>
+					<p>
+						Kutì Kutì est un jeu d'assemblage lumineux et interactif.<br> Par le montage de volumes abstraits et de circuits éléctroniques simples,<br> les enfants définissent la création de formes animales imaginaires
+					</p>
+				</div>
+			</div>
+			<div class="col-sm-5 col-sm-offset-1 carousel slide" data-ride="carousel">
+				<div class="carousel-inner" role="listbox">
+					<div class="img1 r-p item active">
+						<img src="{{URL::asset('img/image1.jpg')}}" alt=""">
+					</div>
+
+					<div class="img1 r-p item">
+						<img src="{{URL::asset('img/image2.jpg')}}" alt=""">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -53,5 +75,6 @@
 @endsection
 
 @push('js')
-   <script type="text/javascript" src="{{URL::asset('js/aleatoire.js')}}"></script> 
+   <script type="text/javascript" src="{{URL::asset('js/aleatoire.js')}}"></script>
+   <script type="text/javascript" src="{{URL::asset('js/responsive.js')}}"></script> 
 @endpush
