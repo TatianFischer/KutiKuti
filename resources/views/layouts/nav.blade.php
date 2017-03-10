@@ -1,7 +1,3 @@
-
-
-
-
 <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -19,20 +15,18 @@
             <div class="collapse navbar-collapse" id="barre_navigation">
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="{{url('apropos')}}">&Agrave; propos</a>
+                        <a href="{{url('apropos')}}">&agrave; propos</a>
                     </li>
                     <li>
-                        <a href="{{url('tutos')}}">Tutos</a>
+                        <a href="{{url('tutos')}}">tutos</a>
                     </li>
                     <li>
-                        <a href="#">Photos</a>
+                        <a href="#">photos</a>
                     </li>
                 </ul>
-               <form class="navbar-form navbar-right inline-form">
-                <div class="form-group">
+               <div class="nav navbar-nav navbar-right">
                   <a href="{{route('preorders.create')}}" class="btn btn-success">pré-commande</a>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
 

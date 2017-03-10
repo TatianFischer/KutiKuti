@@ -4,7 +4,7 @@ $(function(){
   var pageWidth = $(document.documentElement).width();
   //console.log(pageWidth);
 
-  for(i = 0; i < 15 ; i++){
+  for(i = 0; i < 11 ; i++){
     // On tire aléatoirement une image
     var numeroImage = Math.ceil(Math.random()*5);
 
