@@ -1,6 +1,5 @@
 $(function(){
-  var pageHeight = $('body').height();
-  //console.log(pageHeight);
+  var pageHeight = $(document.documentElement).height();
   var pageWidth = $(document.documentElement).width();
   //console.log(pageWidth);
 
@@ -10,8 +9,8 @@ $(function(){
 
     // On détermine aléatoirement sa position
       // 12.5 -> image de 25px*25px
-    var randomTop = (Math.floor((Math.random()*(pageHeight - 25))+12.5) / pageHeight) * 100;
-    var randomLeft = (Math.floor((Math.random()*(pageWidth - 25))+12.5) / pageWidth) * 100;
+    var randomTop = Math.floor((Math.random()*(pageHeight - 25))+12.5) / $(window).height() * 100;
+    var randomLeft = Math.floor((Math.random()*(pageWidth - 25))+12.5) / $(window).width() * 100;
 
     $('<img>')
       .attr({'src' : 'img/aleatoire/kuti'+numeroImage+'.png', 'alt' : 'petit carré'})
