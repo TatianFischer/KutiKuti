@@ -26,51 +26,6 @@ body {
 
 /* barre de navigation */
 
-#barre_navigation .navbar-nav>li>a {
-    color: rgb(0, 195, 141);
-    margin-right: 30px;
-    margin-left: 0px;
-    padding-top: 60px;
-    padding-bottom: 40px;
-    font-size: 25px;
-}
-
-#barre_navigation ul.navbar-left {
-    width: 40%;
-}
-
-.form-group {
-    margin: 18px;
-    padding: 10px;
-}
-
-.form-group a.btn-success {
-  color: black;
-  background-color: white;
-  border-width: 03px;
-  border-color: purple;
-  box-shadow:-05px 05px 0px purple;
-}
-
-.form-group a.btn-success:hover, .form-group a.btn-success:visited{
-  background-color: white;
-  border-color: purple;
-}
-
-nav {
-    position: relative;
-}
-
-nav .logo {
-    width: 20rem;
-    background-color: white;
-    position: absolute;
-    z-index: 1;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    border: 2px rgb(0, 255, 141) solid;
-}
-
 .navbar {
     margin-bottom: 0px;
     border-radius: inherit;
@@ -82,12 +37,70 @@ nav .logo {
     border-color: #ffffff;
 }
 
+#barre_navigation ul.navbar-left {
+    width: 40%;
+    padding: 40px 0 15px;
+}
+
+#barre_navigation ul.navbar-left li{
+    width: calc(100% / 3);
+}
+
+#barre_navigation .navbar-nav>li>a {
+    font-family: 'Chivo', sans-serif;
+    font-size: 18px;
+    color: rgb(0, 195, 141);
+    text-align: center;
+
+}
+
+.navbar-right {
+    margin-right: 18px;
+    padding-top: 40px;
+    padding-bottom: 25px;
+}
+
+.navbar-right a.btn-success {
+  color: black;
+  background-color: white;
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
+  border-width: 3px;
+  border-color: purple;
+  box-shadow:-05px 05px 0px purple;
+  border-radius: 0;
+}
+
+.form-group a.btn-success:hover, .form-group a.btn-success:visited{
+  background-color: white;
+  border-color: purple;
+}
+
+nav {
+    position: relative;
+}
+
+nav .logo{
+    width: 180px;
+    width: 18rem;
+    height: 180px;
+    height: 18rem;
+    padding:0;
+    background-color: white;
+    box-sizing: content-box;
+    position: absolute;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    border: 2px rgb(0, 255, 141) solid;
+}
+
 .logo img {
     z-index: 1;
     width: 100%;
-    padding-top: 0;
+    height: 156px;
+    padding-top: 22px;
 }
-
 
 /*Navbar admin*/
 #nav_admin{
@@ -224,7 +237,15 @@ nav .logo {
     width: 75%;
 }
 
-
+#apropos iframe {
+    width: 100%;
+    height: 250px;
+    box-sizing: content-box;
+    border: 0;
+    margin: 0;
+    display: block;
+    padding: 20px;
+}
 
 
 
@@ -321,60 +342,51 @@ img.aleatoire{
     height: initial
 }
 
-/* footer */
+/* footer - Modal */
 
 .close {
     float: left;
     margin-left: 220px;
 }
 
-.btn-group-lg>.btn, .btn-lg {
-    font-size: 10px;
-}
-
-
-
-
-
-/* footer modal lien admin */
-
-input {
-    margin-left: 12px;
-}
-
-
-
-
 /* footer */
 
 footer {
     width: 100%;
     text-align: center;
-    font-size: 11px;
     color: white;
 }
 
-
-
-iframe {
-    width: 100%;
-    height: 250px;
-    box-sizing: content-box;
-    border: 0;
-    margin: 0;
-    display: block;
-    padding: 20px;
-}
-
-.lien {
+footer ul.lien {
     background-color: white;
-    font-size: 20px;
+    font-size: 16px;
+    font-size: 1.6rem;
+    margin: 0;
+    padding: 20px 0;
+    width: 100%;
 }
 
-.lien a {
+footer .lien ul li{
+    /*padding: 20px 0;*/
+    display: inline-block;
+}
+
+footer .lien a {
     color: rgb(0, 195, 141);
     font-size: 15px;
 }
+
+footer p{
+    margin-top: 20px;
+    color: black;
+    font-size: 1.2rem;
+}
+
+footer div{
+    margin-top: 10px;
+}
+
+/* footer modal lien admin */
 
 #formRegister{
     color: black;
@@ -385,17 +397,31 @@ iframe {
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
-    #barre_navigation .navbar-nav>li>a {
-        margin-left: -10px;
-        margin-right: 0;
-    }
+
 }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-    #barre_navigation .navbar-nav>li>a {
-        padding: -10px;
-        font-size: 17px;
+    nav .logo{
+        width: 150px;
+        width: 15rem;
+        height: 150px;
+        height: 15rem;
+    }
+
+    nav .logo img{
+        height: auto;
+        padding-top: 10px;
+    }
+
+    #barre_navigation .navbar-nav>li>a{
+        font-size: 16px;
+        font-size: 1.6rem;
+    }
+
+    .navbar-right a.btn-success {
+        font-size: 14px;
+        font-size: 1.4rem;
     }
 
     #apropos .img1:nth-child(2){
@@ -416,9 +442,33 @@ iframe {
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-    .logo {
+    nav .logo {
         margin-top: 40px;
     }
+    #barre_navigation ul.navbar-left{
+        width: 50%;
+        display: inline-block;
+        padding-top: 10px;
+    }
+    #barre_navigation ul.navbar-left li{
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
+
+    #barre_navigation ul.navbar-left li a{
+        padding-right: 0;
+    }
+
+    .navbar-right{
+        width: 50%;
+        display: inline-block;
+        padding-top: 0px;
+        padding-bottom: 60px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
     #tutos .poster:nth-child(2){
         margin: 20px 0;
     }
