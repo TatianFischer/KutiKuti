@@ -20,13 +20,13 @@ class CreatePreorderProductTable extends Migration
                 ->references('id')
                 ->on('preorders')
                 ->onDelete('no action')
-                ->onUpdate('cascade');
+                ->onUpdate('no action');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
                 ->onDelete('no action')
-                ->onUpdate('cascade');
+                ->onUpdate('no action');
             $table->integer('quantity');
         });
     }
