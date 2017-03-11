@@ -14,11 +14,11 @@
 			</div>
 
 			<div class="col-md-3 col-md-offset-1 img1 r-p">
-				<img src="{{URL::asset('img/image1.jpg')}}" alt=""">
+				<img src="{{URL::asset('img/apropos/image1.jpg')}}" alt="Elements Kutì Kutì sur fond bleu clair">
 			</div>
 
 			<div class="col-md-3 col-md-offset-1 img1 r-p">
-				<img src="{{URL::asset('img/image2.jpg')}}" alt=""">
+				<img src="{{URL::asset('img/apropos/image2.jpg')}}" alt="Elephant en éléments Kutì Kutì">
 			</div>
 		</div>
 
@@ -30,14 +30,14 @@
 					</p>
 				</div>
 			</div>
-			<div class="col-sm-5 col-sm-offset-1 carousel slide" data-ride="carousel">
+			<div class="col-sm-5 col-sm-offset-2 carousel slide" data-ride="carousel">
 				<div class="carousel-inner" role="listbox">
 					<div class="img1 r-p item active">
-						<img src="{{URL::asset('img/image1.jpg')}}" alt=""">
+						<img src="{{URL::asset('img/apropos/image1.jpg')}}" alt="Elements Kutì Kutì sur fond bleu clair">
 					</div>
 
 					<div class="img1 r-p item">
-						<img src="{{URL::asset('img/image2.jpg')}}" alt=""">
+						<img src="{{URL::asset('img/apropos/image2.jpg')}}" alt="Elephant en éléments Kutì Kutì">
 					</div>
 				</div>
 			</div>
@@ -48,24 +48,27 @@
 
 		<div class="col-md-12 desc2">
 
-			<div class="col-md-6 paragraphe">
-				<p id="apropos_paragraphe2">Kutì team : Pauline & Anna <br> Une passion commune : la réalisation de supports pédagogique ludiques et créatifs <br> Une vision : le design et la technologie comme vecteur d'interaction et d'apprentissage <br> Un engagement : l'amusement comme valeur centrale de leur création.<br> 
-				Leur collaboration débute en octobre dernier au sein de Villette Makerz by WoMa et donne vie au jeu Kutì Kutì
+			<div class="col-md-5 col-md-offset-1 col-xs-12 paragraphe">
+				<p id="apropos_paragraphe2">Kutì team : Pauline & Anna // Une passion commune : la réalisation de supports pédagogiques ludiques et créatifs // Une vision : le design et la technologie comme vecteur d'interaction et d'apprentissage // Un engagement : l'amusement comme valeur centrale de leur création.<br> 
+				Leur collaboration débute en octobre dernier au sein de Villette Makerz by WoMa et donne vie au jeu Kutì Kutì.
 				</p>
 			</div>
 
-			<div class="col-md-6 r-p" id="apropos_image">
-				<img src="{{URL::asset('img/image3.jpg')}}" alt="">
+			<div class="col-md-5 r-p" id="apropos_image">
+				<div class="col-md-11 col-md-offset-1 r-p">
+					<img src="{{URL::asset('img/apropos/image3.jpg')}}" alt="Pauline et Anna">
+				</div>
 			</div>
 
 		</div>
 	</div>
-	<br>
-	<br>
 	
-	<div class="col-xs-12 map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d2623.139139853995!2d2.389043088540035!3d48.89368540395556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x47e66dcb97e5f155%3A0xcf11e2120157690f!2sGalerie+de+la+Villette%2C+75019+Paris!3m2!1d48.8924398!2d2.3881942!5e0!3m2!1sfr!2sfr!4v1487684536483" frameborder="0" style="border:0" allowfullscreen></iframe>
+	<div class="row">
+		<div class="col-md-11 map">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.208520037738!2d2.3881013999999996!3d48.8923631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66dcb97a6455b%3A0x85473c5c7cdfef9f!2sVillette+makerz+by+woma!5e0!3m2!1sfr!2sus!4v1489251241431" frameborder="0" style="border:0" allowfullscreen></iframe>
+		</div>
 	</div>
+		
 
 <!-- fin de la div class container -->	
 </div>

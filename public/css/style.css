@@ -243,16 +243,28 @@ nav .logo{
 }
 
 .desc2 {
-    margin: 10px;
+    margin: 20px;
 }
 
-#apropos_image img{
-    width: 75%;
-    box-shadow: -10px -10px 0 rgb(107, 255, 189);
+.desc2 .paragraphe{
+    background-color: rgb(107, 255, 189);
 }
 
 #apropos_paragraphe2{
-    background-color: rgb(107, 255, 189);
+    padding : 5% 5%;
+    margin : 7% 0;
+    text-align: left;
+}
+
+
+#apropos_image img{
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: -20px -20px 0 rgb(107, 255, 189);
+}
+
+#apropos .map{
+    margin : 20px;
 }
 
 #apropos iframe {
@@ -262,7 +274,6 @@ nav .logo{
     border: 0;
     margin: 0;
     display: block;
-    padding: 20px;
 }
 
 
@@ -418,6 +429,10 @@ footer div{
     #apropos_paragraphe div p{
         margin-top: 0;
     }
+
+    #apropos_paragraphe2{
+        margin : 0%;
+    }
 }
 
 /* Medium Devices, Desktops */
@@ -444,11 +459,6 @@ footer div{
         font-size: 1.4rem;
     }
 
-    #apropos_image:nth-child(2){
-        margin: 20px 0;
-        margin-right: 10px;
-    }
-
     #apropos {
         text-align: center;
     }
@@ -467,6 +477,18 @@ footer div{
 
     #apropos .carousel .item img{
         object-fit: cover;
+    }
+    
+    .desc2 .paragraphe{
+        margin-bottom: 20px;
+    }
+
+    #apropos_paragraphe2{
+        margin :0;
+    }
+
+    #apropos_image div{
+        margin-left: 20px;
     }
 
 }
