@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('modele');
-            $table->enum('couleur', ['gris', 'parme']);
+            $table->string('couleur');
             $table->integer('price');
             $table->string('photo');
         });

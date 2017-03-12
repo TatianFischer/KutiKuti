@@ -169,29 +169,44 @@ nav .logo{
     object-fit: cover;
 }
 
-.info-carrousel_a {
+.info_carrousel{
     font-size: 35px;
+    font-size: 3.5rem;
     position: absolute;
+    width: 25%;
     color: white;
-    top: 0;
-    padding: 40px;
-}
-.info-carrousel_b {
-    font-size: 35px;
-    position: absolute;
-    color: white;
-    top: 32px;
-    left: 70%;
-    padding: 40px;
+    display: block;
 }
 
-.info-carrousel_c {
-    font-size: 35px;
-    position: absolute;
-    color: white;
-    top: 32px;
-    left: 70%;
-    padding: 40px;
+.info_carrousel.top{
+    top:0;
+    margin-top: 3%;
+}
+
+.info_carrousel.middle{
+    transform: translateY(-50%);
+    top:50%;
+}
+
+.info_carrousel.bottom{
+    bottom: 0;
+    margin-bottom: 3%;
+}
+
+.info_carrousel.left {
+    margin-left: 3%;
+}
+
+.info_carrousel.center {
+    transform: translateX(-50%);
+    text-align: center;
+    left: 50%;
+}
+
+.info_carrousel.right {
+    right: 0%;
+    text-align: right;
+    margin-right: 3%;
 }
 
 

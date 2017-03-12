@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('accueil');
-})->name('accueil');
+Route::get('/', 'CarouselsController@accueil')->name('accueil');
 
 Route::get('apropos', function() {
 	return view('apropos');
@@ -22,6 +20,26 @@ Route::get('apropos', function() {
 Route::get('tutos', 'TutosController@index')->name('tutos');
 
 Route::get('tutos/{id}-{tutos}', 'TutosController@show')->where(['id' => '[0-9]'])->name('tutos.show');
+
+
+/*-----------------------------------------
+-------------------------------------------*/
+Route::get('carousel', 'CarouselsController@index')->name('carousel.index');
+
+// Formulaire ajout slide carousel
+Route::get('carousel/create', 'CarouselsController@create')->name('carousel.create');
+
+// Gestion du formulaire d'ajout
+Route::post('carousel', 'CarouselsController@store')->name('carousel.store');
+
+// Formulaire de modification d'un slide
+Route::get('carousel/{carousel}/edit', 'CarouselsController@edit')->name('carousel.edit');
+
+// Gestion du formulaire de modification
+Route::put('carousel/{carousel}', 'CarouselsController@update')->name('carousel.update');
+
+// Suppression d'un slide
+Route::delete('carousel/{carousel}', 'CarouselsController@destroy')->name('carousel.destroy');
 
 /*-----------------------------------------
 -------------------------------------------*/
