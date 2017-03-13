@@ -54,7 +54,7 @@
 					<option value=""></option>
 					<option value="left">Left</option>
 					<option value="center">Center</option>	
-					<option value="rigth">Right</option>	
+					<option value="right">Right</option>	
 				</select>
 			</div>
 

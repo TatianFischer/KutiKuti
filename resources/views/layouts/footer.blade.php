@@ -96,7 +96,7 @@
             </li>
         </ul>    
     </div>
-    <div class="row">
+    <div class="row r-m">
         <div class="col-xs-12">
             @if(Auth::check())
                 <a href="{{route('logout')}}" class="btn btn-default">Déconnexion</a>

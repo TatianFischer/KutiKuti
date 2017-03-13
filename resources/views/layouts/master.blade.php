@@ -4,7 +4,10 @@
   <title>Kuti Kuti</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Local -->
+  <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
+  <!-- CDN -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <!-- font-family: 'Chivo', sans-serif; -->
   <link href="https://fonts.googleapis.com/css?family=Chivo" rel="stylesheet">
   <link href="{{URL::asset('css/style.css')}}" rel="stylesheet">
@@ -30,10 +33,13 @@
         <!-- Footer -->
       @include('layouts.footer')
 </div>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- Local -->
+    <script src="{{URL::asset('js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
+    <!-- CDN -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <!-- JS pour l'Ajax -->
     <script src="{{URL::asset('js/login.js')}}"></script>
     <!-- JS aditionnel -->
