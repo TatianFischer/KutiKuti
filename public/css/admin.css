@@ -70,3 +70,17 @@ form input[type="submit"]{
 #videos form input[type="submit"]{
 	margin-top: 83px;
 }
+
+
+#products #choix_couleur{
+	z-index: 300;
+	background-color: white;
+}
+
+#products #choix_couleur ul{
+	padding-left: 14px;
+}
+
+#products #choix_couleur ul li{
+	list-style: none;
+}

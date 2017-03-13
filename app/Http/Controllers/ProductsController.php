@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Product;
@@ -23,7 +24,8 @@ class ProductsController extends Controller
 
 
     public function create(){
-        return view('product.create');
+        $distinct_color = DB::table('products')->distinct('couleur')->pluck('couleur');
+        return view('product.create', compact('distinct_color'));
     }
 
     public function store(Request $request, Product $product){
@@ -36,7 +38,7 @@ class ProductsController extends Controller
         ]);
 
         $product->modele = $request->modele;
-        $product->couleur = $request->couleur;
+        $product->couleur = strtolower($request->couleur);
         $product->price = $request->price;
         if($request->hasFile('photo')){
             $file = Input::file('photo');
@@ -53,7 +55,9 @@ class ProductsController extends Controller
     }
 
     public function edit(Product $product){
-        return view('product.edit', compact('product'));
+
+        $distinct_color = DB::table('products')->distinct('couleur')->pluck('couleur');
+        return view('product.edit', compact('product', 'distinct_color'));
     }
 
     public function update(Request $request, Product $product){
@@ -65,7 +69,7 @@ class ProductsController extends Controller
         ]);
 
         $product->modele = $request->modele;
-        $product->couleur = $request->couleur;
+        $product->couleur = strtolower($request->couleur);
         $product->price = $request->price;
 
         $last_photo_name = $product->photo;

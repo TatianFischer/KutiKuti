@@ -101,6 +101,7 @@ Route::put('produits/{product}', 'ProductsController@update')->name('products.up
 // Suppression d'un produit
 Route::delete('produits/{product}', 'ProductsController@destroy')->name('products.destroy');
 
+
 /*------------------------------------------
 --------------------------------------------*/
 // Gestion du formulaire de connexion

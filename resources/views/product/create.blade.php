@@ -36,10 +36,12 @@
 
 			<div class="form-group">
 				<label for="couleur" class="control-label col-sm-4">Couleur :</label>
-				<select class="form-control" id="couleur" name="couleur" required>
-					<option value="gris">Gris</option>
-					<option value="parme">Parme</option>
-				</select>
+				<input type="text" class="form-control" id="couleur" name="couleur" required>
+				<div id="choix_couleur" hidden>
+					<ul>
+						<!-- Liste des couleurs -->
+					</ul>
+				</div>
 			</div>
 		</div>
 
@@ -66,3 +68,28 @@
 </div>
 
 @endsection
+
+@push('js')
+	<script type="text/javascript">
+		$('input[name="couleur"]').on('keyup', function(){
+			$('#choix_couleur ul').empty();
+			$.each(<?= $distinct_color ?>, function(index, color){
+				// On cherche si la chaine entrée correspond aux couleurs
+					// search renvoie le position dans la chaine
+					couleurTyped = $('input[name="couleur"]').val();
+					couleurTypedLower = couleurTyped.toLowerCase();
+				if (!color.search(couleurTypedLower)) {
+					console.log(color);
+					$('<li>').append($('<a>').text(color)
+						.on("click", function(){
+							$('input[name="couleur"]').val($(this).text());
+							$('input[name="couleur"]').next().hide(); 
+						}))
+							.appendTo('#choix_couleur ul');
+				}	
+			})
+		})
+
+		$('#choix_couleur').show();
+	</script>
+@endpush

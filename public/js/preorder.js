@@ -77,9 +77,9 @@ $(function(){
                         $('<li>')
                             .append($('<a>').addClass('cp_option').html('<span class="select_city">'+value.fields.nom_de_la_commune+'</span> (<span class="select_cp">'+value.fields.code_postal+'</span>)')
                                 .on("click", function(){
-                                $('input[name="city"]').val($(this).children('span.select_city').text());
-                                $('input[name="cp"]').val($(this).children('span.select_cp').text());
-                                $('.cp_list').hide();
+                                    $('input[name="city"]').val($(this).children('span.select_city').text());
+                                    $('input[name="cp"]').val($(this).children('span.select_cp').text());
+                                    $('.cp_list').hide();
                                 }))
                             .appendTo('.cp_list');
                     })
