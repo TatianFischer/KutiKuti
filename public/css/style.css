@@ -73,7 +73,7 @@ a:hover{
   border-radius: 0;
 }
 
-.form-group a.btn-success:hover, .form-group a.btn-success:visited{
+.navbar-right a.btn-success:hover, .navbar-right a.btn-success:visited, .navbar-right a.btn-success:active:focus{
   background-color: white;
   border-color: purple;
 }
