@@ -1,5 +1,6 @@
 /* Here comes to good stuff : content styling */
 #content {
+	font-family: 'Chivo', sans-serif;
 	margin:40px auto;
 	min-height:200px;
 	z-index:100;
@@ -112,6 +113,11 @@
 	text-align: right;
 }
 
+#content .inline-block{
+	display: inline-block;
+	float: right;
+}
+
 #content .required {
 	color:#E5224C;
 }
@@ -142,9 +148,14 @@
 	text-transform: capitalize;
 }
 
+#content input[name='city'] {
+	text-transform: capitalize;
+}
+
 #content img{
   width: 50px;
 }
+
 
 /* #content .produit_choix label{
   display: block;

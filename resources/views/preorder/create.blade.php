@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row messages">
         @if(session('success'))
             <div class="alert alert-success"> {{session('success')}} </div>
         @endif
@@ -34,6 +34,7 @@
             <h1>Formulaire de précommande</h1>
             <form class="form-horizontal" action="{{route('preorders.store')}}" method="post" autocomplete="on" id="form_preco">
                 <fieldset>
+                    {{ csrf_field() }}
                     <legend>Informations</legend>
                     <p class="indication">
                         Les champs avec une<span class="required"> * </span>sont obligatoires
@@ -111,7 +112,6 @@
 
                 <fieldset>                
                     <legend>Commande</legend>
-                    {{ csrf_field() }}
                     
                     <div class="col-xs-12" id="commande">
                         <div class="list-group">
@@ -148,10 +148,14 @@
         </div>
     </div>
 </div>
+<?php
+
+    print_r(session('customer'));
+?>
 
 @endsection
 
 
 @push('js')
-    <script src="{{URL::asset('js/preorder.js')}}"></script>
+   <script src="{{URL::asset('js/preorder.js')}}"></script>
 @endpush

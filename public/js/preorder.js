@@ -88,7 +88,7 @@ $(function(){
 
     function createPrevButton(i) {
         var stepName = "step" + i;
-        $("#" + stepName + "commands").append("<a href='#' id='" + stepName + "Prev' class='prev btn btn-primary'><span class='glyphicon glyphicon-chevron-left'> Précédent</a>");
+        $("#" + stepName + "commands").append("<a id='" + stepName + "Prev' class='prev btn btn-primary'><span class='glyphicon glyphicon-chevron-left'></span> Précédent</a>");
 
         $("#" + stepName + "Prev").on("click", function(e) {
             $("#" + stepName).hide();
@@ -100,14 +100,36 @@ $(function(){
 
     function createNextButton(i) {
         var stepName = "step" + i;
-        $("#" + stepName + "commands").append("<a href='#' id='" + stepName + "Next' class='next btn btn-primary'>Suivant <span class='glyphicon glyphicon-chevron-right'></a>");
+        $("#" + stepName + "commands")
+            .append("<a id='" + stepName + "Next' class='next btn btn-primary'>Suivant <span class='glyphicon glyphicon-chevron-right'></a>");
 
         $("#" + stepName + "Next").on("click", function(e) {
-            $("#" + stepName).hide();
-            $("#step" + (i + 1)).show();
-            if (i + 2 == count)
-                $('#save_preco').show();
-            selectStep(i + 1);
+            e.preventDefault();
+
+            $('div.alert.alert-danger').remove();
+
+            
+            if(i == 0){ // Vérification des données
+
+                isFormValid = verificationChamps();
+
+                if(isFormValid == true){
+                    // Envoi dans la variable de session
+                    toSession();
+
+                    $("#" + stepName).hide();
+                    $("#step" + (i + 1)).show();
+                    if (i + 2 == count)
+                        $('#save_preco').show();
+                    selectStep(i + 1);
+
+
+                } else {
+                    $('<div>').addClass('alert alert-danger')
+                        .append($('<p>').text('Veuillez corriger les erreurs'))
+                    .appendTo('.messages');
+                }        
+            }
         });
     }
 
@@ -117,6 +139,133 @@ $(function(){
     }
 
 
+    function verificationChamps(){
+        $('p.alert.alert-danger').remove();
+        formValid = true;
+
+        var textReg = new RegExp(/[a-zéèçùàïîâ_ -]*/, 'i');
+
+        var firstname = $('#firstname').val().trim();
+        
+        if(firstname.length < 2 ){
+            formValid = false;
+
+            errorMessage('firstname', 'N\'oubliez pas de saisir votre prénom');
+
+
+        } else if (!textReg.test(firstname)){
+            formValid = false;
+            
+            errorMessage('firstname', 'Seules les lettres, accentuées ou non, sont acceptées');
+        }
+
+
+
+        var lastname = $('#lastname').val().trim();
+        if(lastname.length < 2 ){
+            formValid = false;
+
+            errorMessage('lastname', 'N\'oubliez pas de saisir votre nom');
+
+        } else if (!textReg.test(lastname)){
+            formValid = false;
+            
+            errorMessage('lastname', 'Seules les lettres, accentuées ou non, sont acceptées');
+        }
+
+
+
+        var email = $('#email').val().trim();
+
+        var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/, 'i');
+        
+        if(email.length < 2){
+
+            formValid = false;
+            errorMessage('email', 'Veuillez entrer une adresse email');
+
+        } else if (!emailReg.test(email)){
+
+            formValid = false;
+            errorMessage('email', 'Veuillez entrer une adresse email valide');
+        }
+
+
+
+        var address = $('#address').val().trim();
+
+        if(address.length < 2){
+
+            formValid = false;
+
+            errorMessage("address", "Veuillez entrer une adresse")
+        }
+
+
+
+        var cp = $('#cp').val().trim();
+
+        var cpReg = new RegExp(/[0-9]{5}/, 'i');
+
+        if(cp.length < 2){
+
+            formValid = false;
+
+            errorMessage('cp', 'Veuillez entrer un code postal');
+
+        } else if(!cpReg.test(cp)) {
+            formValid = false;
+
+            errorMessage('cp', 'Veuillez entrer un code postal valide');     
+        }
+
+
+        var city = $('#city').val().trim();
+
+        if(city.length < 2){
+            formValid = false;
+            errorMessage('city', 'Veuillez entrer une ville');
+
+        } else if(!textReg.test(city)) {
+            formValid = false;
+            errorMessage('city', 'Veuillez entrer une ville qui existe');
+        }
+
+        if(!formValid){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function errorMessage(selector, msg){
+        $("<p>")
+                .addClass('alert alert-danger')
+                .text(msg)
+                .appendTo($('#'+selector).parent().parent());
+    }
+
+    function toSession(){
+        var user = {
+            'lastname'  : $('#lastname').val().trim(),
+            'firstname' : $('#firstname').val().trim(),
+            'email'     : $('#email').val().trim(),
+            'address'   : $('#address').val().trim(),
+            'cp'        : $('#cp').val().trim(),
+            'city'      : $('#city').val().trim(),
+            'token'     : $('input').attr('name', '_token').val().trim()
+        };
+
+        $.ajax({
+            url : '../services/session_preorder.php',
+            type : 'post',
+            data : user,
+            dataType : 'json'
+        })
+        .done(function(data){
+            console.log(data);
+        })
+    }
 
 
 
@@ -164,7 +313,7 @@ $(function(){
 
     })
 
-    $('input[name="cp"]').on('blur', function(){
+    $('input[name="cp"]').parents().on('click', function(){
         $('.cp_list').hide();
     })
 
@@ -184,7 +333,7 @@ $(function(){
                     // Récupération et affichage des données
                     $.each(data.records, function(index, value){
                         $('<li>')
-                            .append($('<a>').addClass('city_option').html('<span class="select_city">'+value.fields.nom_de_la_commune+'</span> (<span class="select_cp">'+value.fields.code_postal+'</span>)')
+                            .append($('<a>').addClass('city_option').html('<span class="select_city">'+value.fields.nom_de_la_commune.toLowerCase()+'</span> (<span class="select_cp">'+value.fields.code_postal+'</span>)')
                                 .on("click", function(){
                                 $('input[name="city"]').val($(this).children('span.select_city').text());
                                 $('input[name="cp"]').val($(this).children('span.select_cp').text());
@@ -208,7 +357,7 @@ $(function(){
 
     })
 
-    $('input[name="city"]').on('blur', function(){
+    $('input[name="city"]').parents().on('click', function(){
         $('.city_list').hide();
     })
 

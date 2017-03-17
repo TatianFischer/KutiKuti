@@ -84,8 +84,20 @@ class PreordersController extends Controller{
     	return view('preorder.create', compact('products'));
 	}
 
-	public function store(Request $request, Preorder $preorder){
+	public function ajoutPanier(){
+		creationPanier();
+	}
 
+	private function creationPanier(){
+		if(!isset($_SESSION['panier'])){
+			$_SESSION['panier'] = array();
+			$_SESSION['panier']['id'] = array();
+		}
+	}
+
+	public function store(Request $request, Preorder $preorder){
+		dd($request);
+		// Vérification que c'est un chiffre
 		$quantities = $this->verificationQuantity($request);
 
 
