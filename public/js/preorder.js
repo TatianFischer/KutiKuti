@@ -1,5 +1,8 @@
 $(function(){
+    //-----------------------------------------------------------------
     // Affichage des détails de précommande dans l'admin
+    //-----------------------------------------------------------------
+
 	$('.details').on('submit', function(e){
 		e.preventDefault();
 		
@@ -56,7 +59,13 @@ $(function(){
 	})
 
 
+
+
+
+    //-----------------------------------------------------------------
     // Formulaire en plusieurs étapes
+    //-----------------------------------------------------------------
+
     var steps = $('#form_preco fieldset');
     var count = steps.length;
     $('#save_preco').hide();
@@ -86,6 +95,9 @@ $(function(){
         }
     })
 
+
+
+
     function createPrevButton(i) {
         var stepName = "step" + i;
         $("#" + stepName + "commands").append("<a id='" + stepName + "Prev' class='prev btn btn-primary'><span class='glyphicon glyphicon-chevron-left'></span> Précédent</a>");
@@ -97,6 +109,10 @@ $(function(){
             selectStep(i - 1);
         });
     }
+
+
+
+
 
     function createNextButton(i) {
         var stepName = "step" + i;
@@ -115,23 +131,40 @@ $(function(){
 
                 if(isFormValid == true){
                     // Envoi dans la variable de session
-                    toSession();
+                    userToSession();
 
-                    $("#" + stepName).hide();
-                    $("#step" + (i + 1)).show();
-                    if (i + 2 == count)
-                        $('#save_preco').show();
-                    selectStep(i + 1);
-
+                    NextPage = true;
 
                 } else {
                     $('<div>').addClass('alert alert-danger')
                         .append($('<p>').text('Veuillez corriger les erreurs'))
                     .appendTo('.messages');
                 }        
+            } else if(i == 1){
+                isCheckboxValid = true;
+                // verificationCheckbox();
+
+                if(isCheckboxValid == true){
+                    // Envoi dans la variable de session
+                    if(typeof products == "undefined"){
+                        products = {};
+                    }
+                    productsToSession();  
+                }
+            }
+
+            if(NextPage){
+                $("#" + stepName).hide();
+                $("#step" + (i + 1)).show();
+                if (i + 2 == count)
+                    $('#save_preco').show();
+                selectStep(i + 1);
             }
         });
     }
+
+
+
 
     function selectStep(i) {
         $("#steps li").removeClass("current");
@@ -245,7 +278,9 @@ $(function(){
                 .appendTo($('#'+selector).parent().parent());
     }
 
-    function toSession(){
+
+
+    function userToSession(){
         var user = {
             'lastname'  : $('#lastname').val().trim(),
             'firstname' : $('#firstname').val().trim(),
@@ -253,24 +288,62 @@ $(function(){
             'address'   : $('#address').val().trim(),
             'cp'        : $('#cp').val().trim(),
             'city'      : $('#city').val().trim(),
-            'token'     : $('input').attr('name', '_token').val().trim()
+            '_token'     : $('input').attr('name', '_token').val().trim()
         };
 
         $.ajax({
-            url : '../services/session_preorder.php',
-            type : 'post',
+            url : urlCustomer,
+            type : 'get',
             data : user,
             dataType : 'json'
         })
-        .done(function(data){
-            console.log(data);
+        .done(function(user){
+            $('#coordinates').html(user.lastname+' '+user.firstname+'<br>'+user.address+'<br>'+user.cp+' '+user.city);
         })
+    }
+
+    function productsToSession(){
+        console.log('entrée');
+        $('input[type="checkbox"]:checked').each(function(index, product){
+            id_produit = $(this).val().trim();
+            if(typeof products['id_produit'] == "undefined" || products['id_produit'].indexOf(id_produit) == -1){
+                if(typeof products['id_produit'] != "undefined"){
+                    var i = products['id_produit'].length;
+                } else {
+                    var i = 0;
+                    products['id_produit'] = [];
+                    products['quantity'] = [];
+                }
+                products['id_produit'][i] = id_produit;
+                products['quantity'][i] = 1;
+            } else {
+                console.log('Erreur de création de panier');
+            }
+        });
+        console.log(products);
+        productsJSON = JSON.stringify(products);
+
+        $.ajax({
+            url : urlPanier,
+            type : 'get',
+            data : products,
+            dataType : 'json'
+        })
+        .done(function(panier){
+            console.log(panier);
+            productNumber = products['id_produit'].length;
+            $('#list_products').empty();
+            for(var nber = 0; nber < productNumber ; nber++){
+                $('<li>').text(products['id_produit'][nber]+" "+products['quantity'][nber]).appendTo('#list_products');
+            } 
+        })  
     }
 
 
 
 
 
+    //-----------------------------------------------------------------
     // Code Postal
     // https://datanova.legroupe.laposte.fr/api/records/1.0/search/?dataset=laposte_hexasmal&q=94230&facet=nom_de_la_commune&facet=code_postal
     $('input[name="cp"]').on('keyup', function(){

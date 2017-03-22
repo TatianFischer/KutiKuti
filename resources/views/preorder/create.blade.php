@@ -136,6 +136,12 @@
                     <legend>Résumé</legend>
                     <div class="col-xs-12">
                         <!-- lol -->
+                        <h5>Coordonnées</h5>
+                        <p id="coordinates"></p>
+
+                        <h5>Produits</h5>
+                        <ul id="list_products"></ul>
+                    </div>
                     </div>
                 </fieldset>
  
@@ -148,14 +154,14 @@
         </div>
     </div>
 </div>
-<?php
-
-    print_r(session('customer'));
-?>
 
 @endsection
 
 
 @push('js')
-   <script src="{{URL::asset('js/preorder.js')}}"></script>
+    <script type="text/javascript">
+        var urlCustomer = "{{route('preorders.customer')}}";
+        var urlPanier = "{{route('preorders.panier')}}";
+    </script>
+    <script src="{{URL::asset('js/preorder.js')}}"></script>
 @endpush

@@ -11,13 +11,6 @@ use App\PreorderProduct;
 use Carbon\Carbon;
 
 class PreordersController extends Controller{
-	function __construct()
-
-	{
-
-		$this->middleware('ajax', ['only' => 'show']);
-
-	}
 
 	public function index(){
 		$preorders = Preorder::all();
@@ -84,15 +77,53 @@ class PreordersController extends Controller{
     	return view('preorder.create', compact('products'));
 	}
 
-	public function ajoutPanier(){
-		creationPanier();
+	public function createCustomer(Request $request){
+		$this->validate($request,[
+			'lastname' => 'required|min:2',
+			'firstname' => 'required|min:2',
+			'email' => 'email',
+			'address' => 'required|min:2',
+			'city' => 'required|min:2',
+			'cp' => 'numeric|digits:5',
+		]);
+
+		$user = [
+			'lastname' 	=> 	$request->lastname,
+			'firstname' => 	$request->firstname,
+			'email'		=>	$request->email,
+			'address' 	=>	$request->address,
+			'city'		=> 	$request->city,
+			'cp'		=>	$request->cp,
+		];
+
+		$request->session()->put(['user' => $user]);
+
+		return response()->json(session('user'));
+	}
+
+	public function ajoutPanier(Request $request){
+		if(!isset($panier)){
+			$panier = $this->creationPanier();
+		}
+
+		foreach ($request->id_produit as $produit) {
+			$panier['id_produit'][] = $produit;
+		}
+
+		foreach ($request->quantity as $quantity) {
+			$panier['quantity'][] = $quantity;
+		}
+
+		$request->session()->put(['panier' => $panier]);
+
+		return response()->json(session('panier'));
 	}
 
 	private function creationPanier(){
-		if(!isset($_SESSION['panier'])){
-			$_SESSION['panier'] = array();
-			$_SESSION['panier']['id'] = array();
-		}
+		return $panier = [
+			'id_produit' => [],
+			'quantity' => []
+		];
 	}
 
 	public function store(Request $request, Preorder $preorder){
@@ -103,7 +134,7 @@ class PreordersController extends Controller{
 
 		$total = $this->calculMontantCommande($request, $quantities);
 
-		$this->validate($request,[
+		/*$this->validate($request,[
 			'lastname' => 'required|min:2',
 			'firstname' => 'required|min:2',
 			'email' => 'email',
@@ -111,7 +142,7 @@ class PreordersController extends Controller{
 			'city' => 'required|min:2',
 			'cp' => 'numeric|digits:5',
 			'quantity.*' => 'numeric|nullable'
-		]);
+		]);*/
 
 		$preorder->lastname 	= $request->lastname;
 		$preorder->firstname 	= $request->firstname;

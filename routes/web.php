@@ -46,6 +46,12 @@ Route::delete('carousel/{carousel}', 'CarouselsController@destroy')->name('carou
 // Formulaire de précommande
 Route::get('preorder/create', 'PreordersController@create')->name('preorders.create');
 
+// Ajout du client à la session
+Route::get('preorder/create/user', 'PreordersController@createCustomer')->name('preorders.customer')->middleware('ajax');
+
+// Ajout des produits au panier
+Route::get('preorder/create/panier', 'PreordersController@ajoutPanier')->name('preorders.panier')->middleware('ajax');
+
 // Ajout de la précommande à la base de donnée
 Route::post('preorder', 'PreordersController@store')->name('preorders.store');
 
@@ -54,7 +60,7 @@ Route::get('preorder', 'PreordersController@index')->name('preorders.index')->mi
 
 
 // Page admin avec détail de la précommande
-Route::get('preorder/{preorder}', 'PreordersController@show')->name('preorders.show')->middleware('auth');
+Route::get('preorder/{preorder}', 'PreordersController@show')->name('preorders.show')->middleware('auth')->middleware('ajax');
 
 // Formulaire pour supprimer le précommande
 Route::delete('preorder/{preorder}', 'PreordersController@destroy')->name('preorders.destroy')->middleware('auth');
