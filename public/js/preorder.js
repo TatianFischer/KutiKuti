@@ -298,7 +298,7 @@ $(function(){
             dataType : 'json'
         })
         .done(function(user){
-            $('#coordinates').html(user.lastname+' '+user.firstname+'<br>'+user.address+'<br>'+user.cp+' '+user.city);
+            console.log(user);
         })
     }
 
@@ -331,11 +331,6 @@ $(function(){
         })
         .done(function(panier){
             console.log(panier);
-            productNumber = products['id_produit'].length;
-            $('#list_products').empty();
-            for(var nber = 0; nber < productNumber ; nber++){
-                $('<li>').text(products['id_produit'][nber]+" "+products['quantity'][nber]).appendTo('#list_products');
-            } 
         })  
     }
 

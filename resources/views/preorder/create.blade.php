@@ -48,7 +48,7 @@
                                  <div class="col-xs-8">
                                     <div class="input-group">
                                         <span class="input-group-addon glyphicon glyphicon-user"></span>
-                                        <input class="form-control" type="text" name="lastname" id="lastname" required>
+                                        <input class="form-control" type="text" name="lastname" id="lastname" value="<?= (session('user')) ? session('user.lastname') : '' ?>" required>
                                     </div>
                                 </div>   
                             </div>
@@ -58,7 +58,7 @@
                                 <div class="col-xs-8">
                                     <div class="input-group">
                                         <span class="input-group-addon glyphicon glyphicon-user"></span>
-                                        <input class="form-control" type="text" name="firstname" id="firstname" required>
+                                        <input class="form-control" type="text" name="firstname" id="firstname" value="<?= (session('user')) ? session('user.firstname') : '' ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="col-xs-8">
                                     <div class="input-group">
                                         <span class="input-group-addon glyphicon glyphicon-envelope"></span>
-                                        <input class="form-control" type="email" name="email" id="email" required>
+                                        <input class="form-control" type="email" name="email" id="email" value="<?= (session('user')) ? session('user.email') : '' ?>" required>
                                     </div>
                                 </div>     
                             </div>
@@ -80,7 +80,7 @@
                                 <div class="col-xs-8">
                                     <div class="input-group">
                                         <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
-                                        <input class="form-control" type="text" name="address" id="address" required>
+                                        <input class="form-control" type="text" name="address" id="address" value="<?= (session('user')) ? session('user.address') : '' ?>" required>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                 <div class="col-xs-8">
                                     <div class="input-group">
                                         <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
-                                        <input class="form-control" type="text" name="cp" id="cp" required>
+                                        <input class="form-control" type="text" name="cp" id="cp" value="<?= (session('user')) ? session('user.cp') : '' ?>" required>
                                     </div>
                                     <ul class="cp_list" hidden></ul>
                                 </div>                        
@@ -101,7 +101,7 @@
                                 <div class="col-xs-8">
                                     <div class="input-group">
                                         <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
-                                        <input class="form-control" type="text" name="city" id="city" required>
+                                        <input class="form-control" type="text" name="city" id="city" value="<?= (session('user')) ? session('user.city') : '' ?>" required>
                                     </div>
                                     <ul class="city_list" hidden></ul>
                                 </div>
@@ -134,14 +134,38 @@
 
                 <fieldset>
                     <legend>Résumé</legend>
-                    <div class="col-xs-12">
-                        <!-- lol -->
-                        <h5>Coordonnées</h5>
-                        <p id="coordinates"></p>
-
-                        <h5>Produits</h5>
-                        <ul id="list_products"></ul>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- lol -->
+                            <h5>Coordonnées</h5>
+                            <p id="coordinates">
+                                {{session('user.lastname')}} {{session('user.firstname')}}<br>
+                                {{session('user.email')}}<br>
+                                {{session('user.address')}}<br>
+                                {{session('user.cp')}} {{session('user.city')}}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Produits</h5>
+                            <table id="list_products">
+                                <tr>
+                                    <th colspan="3">Produit</th>
+                                    <th>Quantité</th>
+                                </tr>
+                                @foreach($products as $product)
+                                <?php $i = 0; $quantities = session('panier.quantity')?>
+                                    @if($key = array_search($product->id, session('panier.id_produit')) !== false)
+                                        <tr>
+                                            <td>{{$product->modele}}</td>
+                                            <td>{{$product->couleur}}</td>
+                                            <td>{{$product->price}} €</td>
+                                            <td>{{$quantities[$key]}}</td>
+                                        </tr>
+                                        <?php $i++; ?>
+                                    @endif
+                                @endforeach
+                            </table>
+                        </div>
                     </div>
                 </fieldset>
  
