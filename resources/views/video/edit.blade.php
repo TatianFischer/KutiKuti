@@ -38,7 +38,7 @@
 
 			<div class="form-group">
 				<label for="tag" class="control-label col-sm-4">Tag :</label>
-				<span class="help-block col-sm-6">Numéro de la vidéo</span>
+				<span class="help-block col-sm-6">Numéro de la vidéo dans le lien Vimeo</span>
 				<input type="text" class="form-control" id="tag" name="tag" required value="{{$video->tag}}">
 			</div>
 		</div>
@@ -51,14 +51,15 @@
 			</div>
 
 			<div class="form-group">
-				<label for="poster" class="control-label col-xs-12">Poster :</label>
-				
-				<div class="col-xs-3 col-md-4 col-lg-3">
+				<div class="col-xs-4 col-sm-3 col-md-4 col-lg-3">
 				@if(isset($video->poster))
 					<img src="{{URL::asset('img/posters/'.$video->poster)}}" alt="{{$video->title}}">
 				@endif
 				</div>
-				<div class="col-xs-9 col-md-8 col-lg-9 r-p">
+
+				<label for="poster" class="control-label col-xs-8 col-sm-9 col-md-8 col-lg-9">Poster :</label>
+				
+				<div class="col-xs-8 col-sm-9 col-md-8 col-lg-9 r-p">
 					<input type="file" class="form-control" id="poster" name="poster" value="{{$video->poster}}">	
 				</div>
 			</div>

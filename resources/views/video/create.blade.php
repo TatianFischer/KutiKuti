@@ -41,7 +41,7 @@
 
 			<div class="form-group">
 				<label for="tag" class="control-label col-sm-4">Tag :</label>
-				<span class="help-block col-sm-6">Numéro de la vidéo</span>
+				<span class="help-block col-sm-6">Numéro de la vidéo dans le lien Vimeo</span>
 				<input type="text" class="form-control" id="tag" name="tag" required>
 			</div>
 		</div>

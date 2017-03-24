@@ -28,10 +28,10 @@ class VideosController extends Controller
         $video = new Video();
 
         $this->validate($request, [
-            'title' => 'required',
-            'step' => 'required',
-            'tag' => 'required',
-            'slug' => 'required',
+            'title' => 'required|string|max:191',
+            'step' => 'required|string|max:191',
+            'tag' => 'required|digits:9',
+            'slug' => 'required|string|max:191',
             'poster' => 'required|image|dimensions:min_width=50,min_height=50',
         ]);
 
