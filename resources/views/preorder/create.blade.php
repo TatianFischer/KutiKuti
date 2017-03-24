@@ -15,6 +15,11 @@
     
         @if(isset($success))
             <div class="alert alert-success"> {{$success}} </div>
+            <?php session()->forget('panier'); session()->forget('user'); ?>
+        @endif
+
+        @if(isset($error))
+            <div class="alert alert-danger"> {{$error}} </div>
         @endif
 
         @if(count($errors))
@@ -32,14 +37,25 @@
         
         <div class="col-xs-12">
             <h1>Formulaire de précommande</h1>
-            <form class="form-horizontal" action="{{route('preorders.store')}}" method="post" autocomplete="on" id="form_preco">
+
+
+            <ul id="steps" class="nav nav-pills nav-justified">
+                <li id="stepDesc0" {{($step == 0) ? 'class="current"' : '' }}><span>Etape 1 Informations</span></li>
+                <li id="stepDesc1" {{($step == 1) ? 'class="current"' : '' }}><span>Etape 2 Commande</span></li>
+                <li id="stepDesc2" {{($step == 2) ? 'class="current"' : '' }}><span>Etape 3 Résumé</span></li>
+            </ul>
+
+
+
+            <!-- CLIENTS -->
+            <form class="form-horizontal form_preco" action="{{route('preorders.customer')}}" method="post" autocomplete="on" <?= ($step == 1 || $step == 2) ? 'hidden' : '' ?>>
                 <fieldset>
                     {{ csrf_field() }}
                     <legend>Informations</legend>
                     <p class="indication">
                         Les champs avec une<span class="required"> * </span>sont obligatoires
                     </p>
-                    <!-- CLIENTS -->
+                    
                     <div class="col-xs-12" id="client">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -107,37 +123,70 @@
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- Client -->
+                    </div> 
                 </fieldset>
+            </form>
+            <!-- fin Client -->  
 
+
+
+
+
+
+
+
+
+            <!-- COMMANDE -->
+            <form class="form-horizontal form_preco" action="{{route('preorders.panier')}}" method="post" autocomplete="on" {{($step != 1) ? 'hidden' : '' }}>
                 <fieldset>                
                     <legend>Commande</legend>
-                    
+                    {{ csrf_field() }}
                     <div class="col-xs-12" id="commande">
                         <div class="list-group">
                             <div data-toggle="buttons">
+
                                 @foreach($products as $product)
-                                <label class="list-group-item btn col-md-3 col-xs-6 {{($product->modele != 'LapiKuti') ? 'item-middle' : ''}}" for="{{$product->modele}}">
-                                    <img src="{{URL::asset('img/products/'.$product->photo)}}" alt="{{$product->title}}">
-                                    <input type="checkbox" name="product[{{$product->id}}]" value="{{$product->id}}">
-                                    @if($product->modele != "LapiKuti") <br>  @endif
-                                    <p>{{$product->modele}} - {{$product->couleur}} - {{$product->price}} €</p>
-                                </label>
-                                    
-                                    <!-- <p>Quantité à commander :</p>
-                                    <input type="text" name="quantity[{{$product->id}}]"> -->
+                                <!-- Est-il en session ? -->
+                                    @if(session('panier'))
+                                        <?php $key = array_search($product->id, session('panier.id_produit')); ?>
+                                    @else
+                                        <?php $key = false; ?>
+                                    @endif
+    
+                                    <label class="list-group-item btn col-md-3 col-xs-6 {{($product->modele != 'LapiKuti') ? 'item-middle' : ''}} {{($key !== false) ? 'active' : ''}}" for="{{$product->modele}}">
+
+                                        <img src="{{URL::asset('img/products/'.$product->photo)}}" alt="{{$product->title}}">
+
+                                        <input type="checkbox" name="product[{{$product->id}}]" value="{{$product->id}}" {{($key !== false) ? 'checked' : ''}}>
+
+                                        @if($product->modele != "LapiKuti") <br>  @endif
+
+                                        <p>{{$product->modele}} - {{$product->couleur}} - {{$product->price}} €</p>
+                                    </label>
                                 @endforeach
                             </div>
                         </div>
-                    </div> <!-- Commande -->
+                    </div> 
                 </fieldset>
+            </form>
+            <!-- fin  Commande -->
 
+
+
+
+
+
+
+
+            <!-- RESUME -->
+            <form class="form-horizontal form_preco" action="{{route('preorders.store')}}" <?= ($step != 2) ? 'hidden' : '' ?>  method="post">
                 <fieldset>
                     <legend>Résumé</legend>
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-6">
                             <!-- lol -->
-                            <h5>Coordonnées</h5>
+                            <h4>Coordonnées</h4>
                             <p id="coordinates">
                                 {{session('user.lastname')}} {{session('user.firstname')}}<br>
                                 {{session('user.email')}}<br>
@@ -145,35 +194,59 @@
                                 {{session('user.cp')}} {{session('user.city')}}
                             </p>
                         </div>
+
+
                         <div class="col-md-6">
-                            <h5>Produits</h5>
+                            <h4>Produits</h4>
                             <table id="list_products">
                                 <tr>
                                     <th colspan="3">Produit</th>
-                                    <th>Quantité</th>
+                                    <th rowspan="2">Quantité</th>
+                                    <th rowspan="2">Prix Par <br> Article</th>
                                 </tr>
+                                <tr>
+                                    <th>Modèle</th>
+                                    <th>Couleur</th>
+                                    <th>Prix Unitaire</th>                                    
+                                </tr>
+                                <?php $total = 0; ?>
                                 @foreach($products as $product)
+
+                                    @if(session('panier'))
+                                        <?php $key = array_search($product->id, session('panier.id_produit')); ?>
+                                    @else
+                                        <?php $key = false; ?>
+                                    @endif
                                 <?php $i = 0; $quantities = session('panier.quantity')?>
-                                    @if($key = array_search($product->id, session('panier.id_produit')) !== false)
+                                    @if(session('panier') && $key !== false)
                                         <tr>
                                             <td>{{$product->modele}}</td>
                                             <td>{{$product->couleur}}</td>
                                             <td>{{$product->price}} €</td>
-                                            <td>{{$quantities[$key]}}</td>
+                                            <td>
+                                                <a href="{{route('preorders.decrementation', ['quantity' => $quantities[$key], 'id' => $key])}}" class="glyphicon glyphicon-minus"title="Diminuer la quantité"> </a> 
+                                                <span> {{$quantities[$key]}} </span> 
+                                                <a href="{{route('preorders.incrementation', ['quantity' => $quantities[$key], 'id' => $key])}}" class="glyphicon glyphicon-plus" title="Augmenter la quantité"> </a>
+                                            </td>
+                                            <td>{{$sstotal = $product->price*$quantities[$key]}} €</td>
                                         </tr>
-                                        <?php $i++; ?>
+                                        <?php $i++; $total += $sstotal;?>
                                     @endif
                                 @endforeach
+                                <tr>
+                                    <th colspan="3">Total</th>
+                                    <th colspan="2">{{$total}} €</th>
+                                </tr>
                             </table>
                         </div>
                     </div>
                 </fieldset>
  
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="col-md-6 col-md-offset-6">
-                        <input type="submit" value=" C'est parti ! " class="btn" id="save_preco"/>
+                        <input type="submit" value="C'est parti !" class="btn" id="save_preco"/>
                     </div> 
-                </div>
+                </div> -->
             </form>
         </div>
     </div>
@@ -183,9 +256,5 @@
 
 
 @push('js')
-    <script type="text/javascript">
-        var urlCustomer = "{{route('preorders.customer')}}";
-        var urlPanier = "{{route('preorders.panier')}}";
-    </script>
     <script src="{{URL::asset('js/preorder.js')}}"></script>
 @endpush

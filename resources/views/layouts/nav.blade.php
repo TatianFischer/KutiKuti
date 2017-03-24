@@ -15,13 +15,13 @@
         <div class="r-p collapse navbar-collapse" id="barre_navigation">
             <ul class="nav navbar-nav navbar-left">
                 <li>
-                    <a href="{{url('apropos')}}">&agrave; propos</a>
+                    <a href="{{url('apropos')}}">à propos</a>
                 </li>
                 <li>
                     <a href="{{url('tutos')}}">tutos</a>
                 </li>
                 <li>
-                    <a href="#">photos</a>
+                    <a href="">photos</a>
                 </li>
             </ul>
             <div class="nav navbar-nav navbar-right">

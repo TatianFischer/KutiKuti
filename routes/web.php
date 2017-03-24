@@ -44,13 +44,19 @@ Route::delete('carousel/{carousel}', 'CarouselsController@destroy')->name('carou
 /*-----------------------------------------
 -------------------------------------------*/
 // Formulaire de précommande
-Route::get('preorder/create', 'PreordersController@create')->name('preorders.create');
+Route::get('preorder/create/client', 'PreordersController@create')->name('preorders.create');
 
 // Ajout du client à la session
-Route::get('preorder/create/user', 'PreordersController@createCustomer')->name('preorders.customer')->middleware('ajax');
+Route::post('preorder/create/produits', 'PreordersController@createCustomer')->name('preorders.customer');
 
 // Ajout des produits au panier
-Route::get('preorder/create/panier', 'PreordersController@ajoutPanier')->name('preorders.panier')->middleware('ajax');
+Route::post('preorder/create/panier', 'PreordersController@ajoutPanier')->name('preorders.panier');
+
+// Décrémentation
+Route::get('preorder/create/moins-{quantity}-{id}', 'PreordersController@decrementation')->name('preorders.decrementation');
+
+// Incrémentation
+Route::get('preorder/create/plus-{quantity}-{id}', 'PreordersController@incrementation')->name('preorders.incrementation');
 
 // Ajout de la précommande à la base de donnée
 Route::post('preorder', 'PreordersController@store')->name('preorders.store');

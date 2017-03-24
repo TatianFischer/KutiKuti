@@ -66,30 +66,21 @@ $(function(){
     // Formulaire en plusieurs étapes
     //-----------------------------------------------------------------
 
-    var steps = $('#form_preco fieldset');
+    var steps = $('.form_preco');
     var count = steps.length;
-    $('#save_preco').hide();
-    $('#form_preco').before('<ul id="steps" class="nav nav-pills nav-justified"></ul>');
 
     steps.each(function(i){
-        $(this).wrap('<div id="step'+i+'"></div>');
+        $(this).addClass("step"+i);
         $(this).append('<p id="step'+i+'commands"></p>'); // Ajout des commandes
-
-        // 2
-        var name = $(this).find("legend").html();
-        $("<li>").attr('id', "stepDesc" + i)
-            .append($('<span>').text("Etape " + (i + 1) + " " + name))
-                .appendTo("#steps");
         
 
         if(i == 0){
             createNextButton(i);
             selectStep(i);
         } else if(i == count-1){
-            $('#step'+i).hide();
             createPrevButton(i);
+            createSubmitButton(i);
         } else {
-            $('#step'+i).hide();
             createPrevButton(i);
             createNextButton(i);
         }
@@ -99,13 +90,12 @@ $(function(){
 
 
     function createPrevButton(i) {
-        var stepName = "step" + i;
-        $("#" + stepName + "commands").append("<a id='" + stepName + "Prev' class='prev btn btn-primary'><span class='glyphicon glyphicon-chevron-left'></span> Précédent</a>");
+        var stepName = 'step' + i;
+        $('#' + stepName + 'commands').append('<a id="' + stepName + 'Prev" class="prev btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Précédent</a>');
 
-        $("#" + stepName + "Prev").on("click", function(e) {
-            $("#" + stepName).hide();
-            $("#step" + (i - 1)).show();
-            $('#save_preco').hide();
+        $('#' + stepName + 'Prev').on("click", function(e) {
+            $('.' + stepName).hide();
+            $('.step' + (i - 1)).show();
             selectStep(i - 1);
         });
     }
@@ -117,54 +107,48 @@ $(function(){
     function createNextButton(i) {
         var stepName = "step" + i;
         $("#" + stepName + "commands")
-            .append("<a id='" + stepName + "Next' class='next btn btn-primary'>Suivant <span class='glyphicon glyphicon-chevron-right'></a>");
+            .append('<button type="submit" id="' + stepName + 'Next" class="next btn btn-primary">Suivant <span class="glyphicon glyphicon-chevron-right"></button>');
 
-        $("#" + stepName + "Next").on("click", function(e) {
-            e.preventDefault();
-
+        $(".form_preco:eq(" + i + ")").on("submit", function(e) {
             $('div.alert.alert-danger').remove();
-
+            selectStep(i + 1);
             
             if(i == 0){ // Vérification des données
 
                 isFormValid = verificationChamps();
 
-                if(isFormValid == true){
-                    // Envoi dans la variable de session
-                    userToSession();
-
-                    NextPage = true;
-
-                } else {
+                if(isFormValid == false){
                     $('<div>').addClass('alert alert-danger')
                         .append($('<p>').text('Veuillez corriger les erreurs'))
-                    .appendTo('.messages');
-                }        
+                    .prependTo('fieldset');
+                    e.preventDefault();
+                }
+
             } else if(i == 1){
                 isCheckboxValid = true;
-                // verificationCheckbox();
-
-                if(isCheckboxValid == true){
-                    // Envoi dans la variable de session
-                    if(typeof products == "undefined"){
-                        products = {};
-                    }
-                    productsToSession();  
+                n = $('label.active').length;
+                if(n == 0){
+                    isCheckboxValid = false;
                 }
-            }
+                
+                //isCheckboxValid = verificationCheckbox();
 
-            if(NextPage){
-                $("#" + stepName).hide();
-                $("#step" + (i + 1)).show();
-                if (i + 2 == count)
-                    $('#save_preco').show();
-                selectStep(i + 1);
+                if(isCheckboxValid == false){
+                    e.preventDefault();
+                    $('<div>').addClass('alert alert-danger')
+                        .append($('<p>').text('Veuillez selectionner au moins un produit'))
+                    .prependTo('fieldset');
+                }
             }
         });
     }
 
 
-
+    function createSubmitButton(i){
+        var stepName = "step" + i;
+        $("#" + stepName + "commands")
+            .append('<input type="submit" id="save_preco" value="C\'est parti !" class="btn btn-success">');
+    }
 
     function selectStep(i) {
         $("#steps li").removeClass("current");
@@ -180,11 +164,14 @@ $(function(){
 
         var firstname = $('#firstname').val().trim();
         
-        if(firstname.length < 2 ){
+        if(firstname.length < 2){
             formValid = false;
 
             errorMessage('firstname', 'N\'oubliez pas de saisir votre prénom');
 
+        } else if(firstname.length > 191){
+
+            errorMessage('firstname', 'Votre prénom ne doit pas faire plus de 191 caractères');
 
         } else if (!textReg.test(firstname)){
             formValid = false;
@@ -200,6 +187,10 @@ $(function(){
 
             errorMessage('lastname', 'N\'oubliez pas de saisir votre nom');
 
+        } else if(firstname.length > 191){
+
+            errorMessage('lastname', 'Votre nom ne doit pas faire plus de 191 caractères');
+
         } else if (!textReg.test(lastname)){
             formValid = false;
             
@@ -211,7 +202,7 @@ $(function(){
         var email = $('#email').val().trim();
 
         var emailReg = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/, 'i');
-        
+
         if(email.length < 2){
 
             formValid = false;
@@ -227,11 +218,20 @@ $(function(){
 
         var address = $('#address').val().trim();
 
-        if(address.length < 2){
+        var textNumReg = new RegExp(/[0-9a-zéèçùàïîâ_ -]*/, 'i');
+
+        if(address.length < 10){
 
             formValid = false;
 
-            errorMessage("address", "Veuillez entrer une adresse")
+            errorMessage("address", "Veuillez entrer une adresse");
+
+        } else if(!textNumReg.test(address)){
+
+            formValid = false;
+
+            errorMessage("address", "Veuillez entrer une adresse correcte");
+
         }
 
 
@@ -255,13 +255,22 @@ $(function(){
 
         var city = $('#city').val().trim();
 
+        var cityReg = new RegExp(/[^0-9][a-zéèçùàïîâ_ -]*/, 'i')
+
         if(city.length < 2){
             formValid = false;
             errorMessage('city', 'Veuillez entrer une ville');
+            console.log('hello1');
 
-        } else if(!textReg.test(city)) {
+        } else if(city.length > 191){
+
+            errorMessage('city', 'Le nom de la ville ne doit pas faire plus de 191 cractères');
+            console.log('hello2');
+
+        } else if(!cityReg.test(city)) {
             formValid = false;
             errorMessage('city', 'Veuillez entrer une ville qui existe');
+            console.log('hello3');
         }
 
         if(!formValid){
@@ -280,32 +289,12 @@ $(function(){
 
 
 
-    function userToSession(){
-        var user = {
-            'lastname'  : $('#lastname').val().trim(),
-            'firstname' : $('#firstname').val().trim(),
-            'email'     : $('#email').val().trim(),
-            'address'   : $('#address').val().trim(),
-            'cp'        : $('#cp').val().trim(),
-            'city'      : $('#city').val().trim(),
-            '_token'     : $('input').attr('name', '_token').val().trim()
-        };
 
-        $.ajax({
-            url : urlCustomer,
-            type : 'get',
-            data : user,
-            dataType : 'json'
-        })
-        .done(function(user){
-            console.log(user);
-        })
-    }
 
-    function productsToSession(){
+/*    function productsToSession(){
         console.log('entrée');
-        $('input[type="checkbox"]:checked').each(function(index, product){
-            id_produit = $(this).val().trim();
+        $('label.active').each(function(index, product){
+            id_produit = $(this).find('input').val().trim();
             if(typeof products['id_produit'] == "undefined" || products['id_produit'].indexOf(id_produit) == -1){
                 if(typeof products['id_produit'] != "undefined"){
                     var i = products['id_produit'].length;
@@ -332,7 +321,7 @@ $(function(){
         .done(function(panier){
             console.log(panier);
         })  
-    }
+    }*/
 
 
 

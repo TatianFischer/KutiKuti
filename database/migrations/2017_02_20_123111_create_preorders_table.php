@@ -18,7 +18,7 @@ class CreatePreordersTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->string('address');
+            $table->text('address');
             $table->string('city');
             $table->integer('cp');
             $table->integer('total');

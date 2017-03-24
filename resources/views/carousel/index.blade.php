@@ -24,7 +24,7 @@
 	<table>
 		<thead>
 			<th>Photo</th>
-			<th>Alternative</th>
+			<th class="texte">Alternative pour lecteurs d'écran</th>
 			<th class="texte">Texte</th>
 			<th colspan="2">Position</th>
 			<th colspan="2">Options</th>

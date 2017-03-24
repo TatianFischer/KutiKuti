@@ -86,7 +86,7 @@
     <div class="row r-m">
         <ul class="col-xs-12 lien">
             <li class="col-md-4 col-sm-6">
-                <a href="http://www.pauline-arnaud.com/" target="_blank">http://www.pauline-arnaud.com/</a>
+                <a href="http://www.pauline-arnaud.com/" target="_blank">http://pauline-arnaud.com/</a>
             </li>
             <li class="col-md-4 col-sm-6">
                 <a href="http://annaaflalo.com/" target="_blank">http://annaaflalo.com/</a>
