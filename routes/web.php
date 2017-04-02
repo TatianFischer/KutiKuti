@@ -121,3 +121,6 @@ Route::post('login', 'SessionsController@store')->name('login');
 
 // Gestion de la déconnexion
 Route::get('logout', 'SessionsController@destroy')->name('logout');
+
+// Reset du password
+Auth::routes();

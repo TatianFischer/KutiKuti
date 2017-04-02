@@ -398,13 +398,6 @@ img.aleatoire{
     height: initial
 }
 
-/* footer - Modal */
-
-.close {
-    float: left;
-    margin-left: 220px;
-}
-
 /* footer */
 
 footer {
@@ -447,6 +440,10 @@ footer div{
 #formRegister{
     color: black;
     font-size: 1.4rem;
+}
+
+h4.modal-title{
+    color: black;
 }
 
 footer a{
