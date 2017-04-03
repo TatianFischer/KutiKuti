@@ -217,7 +217,7 @@
                                     @else
                                         <?php $key = false; ?>
                                     @endif
-                                <?php $i = 0; $quantities = session('panier.quantity')?>
+                                    <?php $i = 0; $quantities = session('panier.quantity')?>
                                     @if(session('panier') && $key !== false)
                                         <tr>
                                             <td>{{$product->modele}}</td>
