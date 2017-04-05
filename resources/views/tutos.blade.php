@@ -49,7 +49,7 @@ $nomber_video_in_the_line++;
 
 @endforeach
 
-
+<?php if(!isset($nomber_video_in_the_line)){$nomber_video_in_the_line = 4;} ?>
 <!-- Pour finir la ligne -->
 @while($i > $nomber_videos && $nomber_video_in_the_line != 4 )
 		<div class="col-sm-4 poster">
