@@ -99,8 +99,12 @@
 		</tbody>
 
 	</table>
+
+	<div class="text-center">{{$preorders->links()}}</div>
 @endsection
 
 @push('js')
 	<script src="{{URL::asset('js/preorder.js')}}"></script>
+	
+	<script type="text/javascript" src="{{URL::asset('js/suppression.js')}}"></script>
 @endpush

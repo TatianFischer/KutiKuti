@@ -65,3 +65,7 @@
 	</table>
 
 @endsection
+
+@push('js')
+	<script type="text/javascript" src="{{URL::asset('js/suppression.js')}}"></script>
+@endpush

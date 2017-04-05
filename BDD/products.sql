@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Client :  127.0.0.1
--- Généré le :  Ven 24 Février 2017 à 10:32
--- Version du serveur :  10.1.13-MariaDB
--- Version de PHP :  5.6.23
+-- Client :  localhost
+-- Généré le :  Lun 03 Avril 2017 à 11:59
+-- Version du serveur :  5.7.11
+-- Version de PHP :  7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
   `modele` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `couleur` enum('gris','parme') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `couleur` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
   `photo` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Contenu de la table `products`

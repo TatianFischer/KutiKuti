@@ -21,7 +21,7 @@
                     <a href="{{url('tutos')}}">tutos</a>
                 </li>
                 <li>
-                    <a href="">photos</a>
+                    <a href="https://www.instagram.com/kutikuti_jeu/" target="_blank">photos</a>
                 </li>
             </ul>
             <div class="nav navbar-nav navbar-right">

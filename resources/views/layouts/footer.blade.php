@@ -8,9 +8,9 @@
             <div class="modal-content">
 
                 <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Se connecter</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Connexion</h4>
+                <h4 class="modal-title" id="myModalLabel">Connexion</h4>
 
                 </div>
 
@@ -59,13 +59,18 @@
 
                         <div class="form-group">
 
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-8 col-md-offset-2">
+
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Mot de passe oublié ?
+                                </a>
 
                                 <button type="submit" class="btn btn-primary">
 
                                     Connexion
 
                                 </button>
+
 
                             </div>
 

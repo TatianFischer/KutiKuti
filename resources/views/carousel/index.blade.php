@@ -19,7 +19,7 @@
         <div class="alert alert-success"> {{$success}} </div>
     @endif
 
-	<p class="ajout"><a href="{{ route('carousel.create')}}">Ajouter un slide</a></p>
+	<p class="ajout"><a href="{{ route('carousel.create')}}" class="btn btn-info">Ajouter un slide</a></p>
 
 	<table>
 		<thead>
@@ -50,9 +50,9 @@
 
 					<td>
 						<form action="{{route('carousel.destroy', ['carousel' => $carousel->id])}}" method="post">
-						{{ csrf_field() }}
-						{{ method_field('DELETE') }}
-						<button type="submit" class="btn btn-danger">Suppression</button>
+							{{ csrf_field() }}
+							{{ method_field('DELETE') }}
+							<button type="submit" class="btn btn-danger">Suppression</button>
 						</form>
 					</td>
 					
@@ -65,3 +65,7 @@
 	</table>
 
 @endsection
+
+@push('js')
+	<script type="text/javascript" src="{{URL::asset('js/suppression.js')}}"></script>
+@endpush

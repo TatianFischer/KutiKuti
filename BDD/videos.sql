@@ -32,7 +32,7 @@ CREATE TABLE `videos` (
   `step` int(11) NOT NULL,
   `tag` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slug` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
+  `poster` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

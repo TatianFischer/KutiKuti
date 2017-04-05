@@ -9,11 +9,14 @@ use App\Preorder;
 use App\Product;
 use App\PreorderProduct;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderMail;
+use App\Mail\AlertMail;
 
 class PreordersController extends Controller{
 
 	public function index(){
-		$preorders = Preorder::latest()->get();
+		$preorders = Preorder::latest()->paginate(15);
 
 		return view('preorder.index', compact('preorders'));
 	}
@@ -175,7 +178,7 @@ class PreordersController extends Controller{
 
 	public function store(Request $request, Preorder $preorder){
 		// dd($request);
-		// Vérification due les quantité et les id_produits sont des chiffres
+		// Vérification que les quantité et les id_produits sont des chiffres
 		$quantities = $this->verificationIsNum("quantities");
 
 		$products = $this->verificationIsNum("products");
@@ -201,35 +204,14 @@ class PreordersController extends Controller{
 			//dd($quantities[$product]);
 			$preorder->products()->attach($product, ['quantity' => $quantities[$key]]);
 		}
-	
+
+		//\Mail::to($preorder->email)->send(new OrderMail($preorder));
+
+		\Mail::to('kutikuti@mail.fr')->send(new AlertMail($preorder));
+
 		return $this->create()->with('success', 'Commande envoyée avec succès');
 	}
 
-/*	private function validateUser(Preorder $preorder){
-		$user = session('user');
-
-
-	//'lastname' => 'required|min:2', 'firstname' => 'required|min:2', 'email' => 'email', 'address' => 'required|min:2', 'city' => 'required|min:2', 'cp' => 'numeric|digits:5'
-
-		if(isset($user['lastname']) && mb_strlen($user['lastname'], 'UTF-8') > 1 && mb_strlen($user['lastname'], 'UTF-8') < 191 && is_string($user['lastname'])){
-			$preorder->lastname = $user['lastname'];
-
-		} else {
-			$errors['lastname'] = "Votre nom doit faire entre 2 et 191 cractères";
-		}
-
-
-		if(isset($user['firstname']) && mb_strlen($user['firstname'], 'UTF-8') > 1 && mb_strlen($user['firstname'] , 'UTF-8') < 191 && is_string($user['firstname'])){
-			$preorder->firstname = $user['firstname'];
-
-		} else {
-			$errors['firstname'] = "Votre prénom doit faire entre 2 et 191 caractères";
-		}
-
-		if(isset($user['address']) && mb_strlen($user['address']) > 10 && is_string($user['address']))
-
-		dd($preorder);
-	}*/
 
 	private function verificationIsNum($test){
 

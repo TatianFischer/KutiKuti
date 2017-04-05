@@ -57,8 +57,7 @@ INSERT INTO `preorders` (`id`, `firstname`, `lastname`, `email`, `address`, `cit
 -- Index pour la table `preorders`
 --
 ALTER TABLE `preorders`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `preorders_email_unique` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
