@@ -16,7 +16,7 @@ use App\Mail\AlertMail;
 class PreordersController extends Controller{
 
 	public function index(){
-		$preorders = Preorder::latest()->get();
+		$preorders = Preorder::latest()->paginate(15);
 
 		return view('preorder.index', compact('preorders'));
 	}

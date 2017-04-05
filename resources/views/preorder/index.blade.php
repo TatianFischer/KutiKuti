@@ -99,6 +99,8 @@
 		</tbody>
 
 	</table>
+
+	<div class="text-center">{{$preorders->links()}}</div>
 @endsection
 
 @push('js')
