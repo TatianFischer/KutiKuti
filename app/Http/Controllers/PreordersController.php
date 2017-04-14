@@ -205,9 +205,9 @@ class PreordersController extends Controller{
 			$preorder->products()->attach($product, ['quantity' => $quantities[$key]]);
 		}
 
-		//\Mail::to($preorder->email)->send(new OrderMail($preorder));
+		\Mail::to($preorder->email)->send(new OrderMail($preorder));
 
-		\Mail::to('kutikuti@mail.fr')->send(new AlertMail($preorder));
+		\Mail::to('hello@kutikuti.fr')->send(new AlertMail($preorder));
 
 		return $this->create()->with('success', 'Commande envoyée avec succès');
 	}

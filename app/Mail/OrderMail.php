@@ -38,6 +38,7 @@ class OrderMail extends Mailable
     public function build()
     {
         //dd($this);
-        return $this->view('mail.order');
+        return $this->subject('Votre commande Kutì Kutì')
+                    ->view('mail.order');
     }
 }

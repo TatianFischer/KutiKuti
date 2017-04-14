@@ -38,6 +38,7 @@ class AlertMail extends Mailable
     public function build()
     {
         //dd($this->preorder);
-        return $this->view('mail.alert');
+        return $this->subject('Nouvelle commande Kutì Kutì')
+                    ->view('mail.alert');
     }
 }
